@@ -3,8 +3,26 @@ import NavBar from "@/components/NavBar";
 import { SearchBar } from "@/components/SearchBar";
 import { WobbleCard } from "@/components/ui/wobble-card";
 import { WobbleComponent } from "@/components/WobbleComponent";
-import { Airplane, Car, Location, MoneyRecive, Translate } from "iconsax-react";
-import { Input } from "@/components/ui/input";
+
+import {
+  Airplane,
+  Bank,
+  Book1,
+  Briefcase,
+  Bus,
+  Car,
+  CloudLightning,
+  Command,
+  GasStation,
+  Happyemoji,
+  Health,
+  Location,
+  MoneyRecive,
+  ShoppingCart,
+  SmartCar,
+  Translate,
+  WalletMinus,
+} from "iconsax-react";
 
 export default function Home() {
   return (
@@ -94,99 +112,115 @@ export default function Home() {
           <div className="w-full h-full pl-60 py-5">
             <h1 className="text-2xl">Services</h1>
           </div>
-          <div className="bg-white items-center rounded-lg flex-col px-5">
-            <div className="flex">
-              {/* Stack 1 */}
-              <div className="flex gap-1 flex-col px-10 pt-12">
+          <div className="bg-white items-center rounded-2xl px-24 py-8">
+            {/* Grid with 2 rows and 7 columns */}
+            <div className="grid grid-cols-7 gap-14">
+              {/* Cab Taxi */}
+              <div className="flex flex-col items-center">
                 <div className="p-4 flex items-center justify-center bg-[#F3F3F3] rounded-full">
                   <Car size="32" color="#A917FE" />
                 </div>
-                <p>Cab Taxi</p>
+                <p className="text-xs pt-2">Cab Taxi</p> {/* Smaller font */}
               </div>
-              <div className="flex gap-1 flex-col px-10 pt-12">
+              {/* Guide */}
+              <div className="flex flex-col items-center">
                 <div className="p-4 flex items-center justify-center bg-[#F3F3F3] rounded-full">
-                  <Car size="32" color="#A917FE" />
+                  <Book1 size="32" color="#A917FE" />
                 </div>
-                <p>Cab Taxi</p>
+                <p className="text-xs pt-2">Guide</p> {/* Smaller font */}
               </div>
-              <div className="flex gap-1 flex-col px-10 pt-12">
+              {/* Pilgrimage */}
+              <div className="flex flex-col items-center">
                 <div className="p-4 flex items-center justify-center bg-[#F3F3F3] rounded-full">
-                  <Car size="32" color="#A917FE" />
+                  <Command size="32" color="#A917FE" />
                 </div>
-                <p>Cab Taxi</p>
+                <p className="text-xs pt-2">Pilgrimage</p> {/* Smaller font */}
               </div>
-              <div className="flex gap-1 flex-col px-10 pt-12">
+              {/* Shopping */}
+              <div className="flex flex-col items-center">
                 <div className="p-4 flex items-center justify-center bg-[#F3F3F3] rounded-full">
-                  <Car size="32" color="#A917FE" />
+                  <ShoppingCart size="32" color="#A917FE" />
                 </div>
-                <p>Cab Taxi</p>
+                <p className="text-xs pt-2">Shopping</p> {/* Smaller font */}
               </div>
-              <div className="flex gap-1 flex-col px-10 pt-12">
+              {/* Dresses */}
+              <div className="flex flex-col items-center">
                 <div className="p-4 flex items-center justify-center bg-[#F3F3F3] rounded-full">
-                  <Car size="32" color="#A917FE" />
+                  <Briefcase size="32" color="#A917FE" />
                 </div>
-                <p>Cab Taxi</p>
+                <p className="text-xs pt-2">Dresses</p> {/* Smaller font */}
               </div>
-              <div className="flex gap-1 flex-col px-10 pt-12">
+              {/* Food */}
+              <div className="flex flex-col items-center">
                 <div className="p-4 flex items-center justify-center bg-[#F3F3F3] rounded-full">
-                  <Car size="32" color="#A917FE" />
+                  <Happyemoji size="32" color="#A917FE" />
                 </div>
-                <p>Cab Taxi</p>
+                <p className="text-xs pt-2">Food</p> {/* Smaller font */}
               </div>
-              <div className="flex gap-1 flex-col px-10 pt-12">
+              {/* Parking */}
+              <div className="flex flex-col items-center">
                 <div className="p-4 flex items-center justify-center bg-[#F3F3F3] rounded-full">
-                  <Car size="32" color="#A917FE" />
+                  <SmartCar size="32" color="#A917FE" />
                 </div>
-                <p>Cab Taxi</p>
+                <p className="text-xs pt-2">Parking</p> {/* Smaller font */}
               </div>
-            </div>
-            <div className="flex pb-10">
-              {/* Stack 1 */}
-              <div className="flex gap-1 flex-col px-10 pt-12">
+              {/* Rent Vehicle */}
+              <div className="flex flex-col items-center">
                 <div className="p-4 flex items-center justify-center bg-[#F3F3F3] rounded-full">
-                  <Car size="32" color="#A917FE" />
+                  <Bus size="32" color="#A917FE" />
                 </div>
-                <p>Cab Taxi</p>
+                <p className="text-xs pt-2">Rent Vehicle</p>{" "}
+                {/* Smaller font */}
               </div>
-              <div className="flex gap-1 flex-col px-10 pt-12">
+              {/* Nearby Banks */}
+              <div className="flex flex-col items-center">
                 <div className="p-4 flex items-center justify-center bg-[#F3F3F3] rounded-full">
-                  <Car size="32" color="#A917FE" />
+                  <Bank size="32" color="#A917FE" />
                 </div>
-                <p>Cab Taxi</p>
+                <p className="text-xs pt-2">Nearby Banks</p>{" "}
+                {/* Smaller font */}
               </div>
-              <div className="flex gap-1 flex-col px-10 pt-12">
+              {/* Weather */}
+              <div className="flex flex-col items-center">
                 <div className="p-4 flex items-center justify-center bg-[#F3F3F3] rounded-full">
-                  <Car size="32" color="#A917FE" />
+                  <CloudLightning size="32" color="#A917FE" />
                 </div>
-                <p>Cab Taxi</p>
+                <p className="text-xs pt-2">Weather</p> {/* Smaller font */}
               </div>
-              <div className="flex gap-1 flex-col px-10 pt-12">
+              {/* Petrol Price */}
+              <div className="flex flex-col items-center">
                 <div className="p-4 flex items-center justify-center bg-[#F3F3F3] rounded-full">
-                  <Car size="32" color="#A917FE" />
+                  <GasStation size="32" color="#A917FE" />
                 </div>
-                <p>Cab Taxi</p>
+                <p className="text-xs pt-2">Petrol Price</p>{" "}
+                {/* Smaller font */}
               </div>
-              <div className="flex gap-1 flex-col px-10 pt-12">
+              {/* Tourist Spot */}
+              <div className="flex flex-col items-center">
                 <div className="p-4 flex items-center justify-center bg-[#F3F3F3] rounded-full">
-                  <Car size="32" color="#A917FE" />
+                  <Location size="32" color="#A917FE" />
                 </div>
-                <p>Cab Taxi</p>
+                <p className="text-xs pt-2">Tourist Spot</p>{" "}
+                {/* Smaller font */}
               </div>
-              <div className="flex gap-1 flex-col px-10 pt-12">
+              {/* Emergency */}
+              <div className="flex flex-col items-center">
                 <div className="p-4 flex items-center justify-center bg-[#F3F3F3] rounded-full">
-                  <Car size="32" color="#A917FE" />
+                  <Health size="32" color="#A917FE" />
                 </div>
-                <p>Cab Taxi</p>
+                <p className="text-xs pt-2">Emergency</p> {/* Smaller font */}
               </div>
-              <div className="flex gap-1 flex-col px-10 pt-12">
+              {/* Visa */}
+              <div className="flex flex-col items-center">
                 <div className="p-4 flex items-center justify-center bg-[#F3F3F3] rounded-full">
-                  <Car size="32" color="#A917FE" />
+                  <WalletMinus size="32" color="#A917FE" />
                 </div>
-                <p>Cab Taxi</p>
+                <p className="text-xs pt-2">Visa</p> {/* Smaller font */}
               </div>
             </div>
           </div>
         </div>
+
         {/* Scroll Div */}
         <div className="py-20">
           <WobbleComponent />
