@@ -1,7 +1,9 @@
+import { AnimatedModal } from "@/components/AnimatedModal";
 import NavBar from "@/components/NavBar";
 import { SearchBar } from "@/components/SearchBar";
 import { WobbleCard } from "@/components/ui/wobble-card";
 import { WobbleComponent } from "@/components/WobbleComponent";
+
 import {
   Airplane,
   Bank,
@@ -16,7 +18,6 @@ import {
   Health,
   Location,
   MoneyRecive,
-  ShoppingBag,
   ShoppingCart,
   SmartCar,
   Translate,
@@ -27,7 +28,6 @@ export default function Home() {
   return (
     <>
       <NavBar />
-
       <main className="pt-36 font-gilroy">
         {/* Hero Section */}
         <div className="flex items-center flex-col justify-center gap-3">
@@ -55,18 +55,20 @@ export default function Home() {
             <h1 className="text-2xl">Featured</h1>
           </div>
           <div className="flex gap-3">
-            <WobbleCard
-              containerClassName="flex flex-col w-64 h-64 rounded-[23.947px] bg-gradient-to-br  from-[#C986F0] to-[#650E98] cursor-pointer"
-              className="py-10"
-            >
-              <div className="pl-24 mb-4">
-                <Airplane className="rotate-45" size="100" color="white" />
-              </div>
-              <h1 className="text-white text-2xl">
-                Plan Your <br />
-                Trip Using AI
-              </h1>
-            </WobbleCard>
+            <AnimatedModal>
+              <WobbleCard
+                containerClassName="flex flex-col w-64 h-64 rounded-[23.947px] bg-gradient-to-br  from-[#C986F0] to-[#650E98] cursor-pointer"
+                className="py-10"
+              >
+                <div className="pl-24 mb-4">
+                  <Airplane className="rotate-45" size="100" color="white" />
+                </div>
+                <h1 className="text-white text-2xl">
+                  Plan Your <br />
+                  Trip Using AI
+                </h1>
+              </WobbleCard>
+            </AnimatedModal>
             <WobbleCard
               containerClassName="flex flex-col w-64 h-64 rounded-[23.947px] bg-gradient-to-br  from-[#86F0F0] to-[#0E5E98] cursor-pointer"
               className="py-10"
