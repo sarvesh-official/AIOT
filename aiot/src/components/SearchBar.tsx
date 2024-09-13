@@ -9,11 +9,6 @@ export function SearchBar() {
     "Currency Conversion",
     "Shopping",
     "Food",
-    "Parking",
-    "Visa",
-    "Weather",
-    "Dresses",
-    "Rent Vehicle",
   ];
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
