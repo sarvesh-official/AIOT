@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function TranslatePage() { // Rename the local component
     return (
-        <div className="min-h-screen flex justify-center bg-[#F3F3F3]">
+        <div className="min-h-screen flex justify-center bg-[#F3F3F3] mt-12">
             <div className="w-full md:w-[90vw]">
                 <div className="flex m-2 ml-0">
                     <ArrowLeft size="24" color="#000" className="mr-2" />
@@ -36,7 +36,7 @@ export default function TranslatePage() { // Rename the local component
                         </div>
                     </div>
                 </div>
-                <div className="flex justify-between items-center mt-4">
+                <div className="flex justify-between items-center my-4 mb-14">
                     <div className="flex-col justify-center items-center p-4 mr-2 w-[44.5vw]  rounded-xl bg-white">
                         <textarea
                             placeholder="Type here..."
