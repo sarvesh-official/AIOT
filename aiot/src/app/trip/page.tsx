@@ -50,7 +50,7 @@ export default function Trip() {
     ]
 
     return (
-        <div className="min-h-screen flex justify-center bg-[#F3F3F3]">
+        <div className="min-h-screen flex justify-center bg-[#F3F3F3] mt-12">
             <div className="w-full md:w-[90vw]">
                 <div className="flex m-2 ml-0">
                     <ArrowLeft size="24" color="#000" className="mr-2" />
@@ -72,8 +72,8 @@ export default function Trip() {
                         </button>
                     </div>
 
-                    <div className="flex justify-between items-center">
-                        <div className="flex justify-left items-center p-6 mr-2 w-[375px] rounded-xl bg-white">
+                    <div className="flex justify-between items-center mt-2">
+                        <div className="flex justify-left items-center p-6 mr-2 w-[24vw] rounded-xl bg-white">
                             <Image src={Malaysia} alt="Malaysia" width={50} height={50} className="mr-4" />
                             <div className="">
                                 <p className="text-gray-600 mx-auto text-left">capital</p>
@@ -82,7 +82,7 @@ export default function Trip() {
                                 </p>
                             </div>
                         </div>
-                        <div className="flex justify-left items-center p-6  mr-2 w-[295px] rounded-xl bg-white">
+                        <div className="flex justify-left items-center p-6  mr-2 w-[20vw] rounded-xl bg-white">
                             <Clock size="32" color="#000" className="mx-4" />
                             <div className="">
                                 <p className="text-gray-600 mx-auto text-left">Time</p>
@@ -91,7 +91,7 @@ export default function Trip() {
                                 </p>
                             </div>
                         </div>
-                        <div className="flex justify-left items-center p-6  mr-2 w-[280px] rounded-xl bg-white">
+                        <div className="flex justify-left items-center p-6  mr-2 w-[17.5vw] rounded-xl bg-white">
                             <DollarCircle size="32" color="#000" className="mx-4" />
                             <div className="">
                                 <p className="text-gray-600 mx-auto text-left">1 Dollar</p>
@@ -100,7 +100,7 @@ export default function Trip() {
                                 </p>
                             </div>
                         </div>
-                        <div className="flex justify-left items-center p-6 rounded-xl bg-gradient-to-r from-[#6AE3FE] to-[#88B6E8] text-white ">
+                        <div className="flex justify-left items-center p-6 rounded-xl bg-gradient-to-r from-[#6AE3FE] to-[#88B6E8] text-white w-[26.5vw]">
                             <h1 className="font-gilroy text-[2vw] font-800 mx-2">27° C</h1>
                             <div className="mx-2">
                                 <p className="text-gray-100 mx-auto text-sm text-center">Tuesday, 13 September</p>
@@ -109,7 +109,7 @@ export default function Trip() {
                             <Sun1 size="32" color="#fff" className="mx-4" />
                         </div>
                     </div>
-                    <div className="flex items-center justify-between w-[90vw] py-8">
+                    <div className="flex items-center justify-between w-[90vw] py-4">
                         <div className="bg-white shadow-lg rounded-lg p-6 w-[44.5vw]">
                             <h2 className="font-gilroy text-black text-[2vw] normal-case leading-normal mb-4">Suggested Flight</h2>
                             <div className="m-4">
