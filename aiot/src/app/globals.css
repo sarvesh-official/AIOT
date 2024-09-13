@@ -2,6 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+
+/* 
+@font-face {
+  font-family: 'MyCustomFont';
+  src: url('../fonts/MyCustomFont.woff2') format('truetype'),
+    url('../fonts/MyCustomFont.woff') format('truetype'),
+    url('../fonts/MyCustomFont.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+} */
+
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
