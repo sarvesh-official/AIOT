@@ -1,5 +1,6 @@
 import NavBar from "@/components/NavBar";
 import { SearchBar } from "@/components/SearchBar";
+import { WobbleCard } from "@/components/ui/wobble-card";
 import { WobbleComponent } from "@/components/WobbleComponent";
 import { Airplane, Car, Location, MoneyRecive, Translate } from "iconsax-react";
 
@@ -7,7 +8,6 @@ export default function Home() {
   return (
     <>
       <NavBar />
-
       <main className="pt-36 font-gilroy">
         {/* Hero Section */}
         <div className="flex items-center flex-col justify-center gap-1">
@@ -51,15 +51,18 @@ export default function Home() {
                 Destinations
               </h1>
             </div>
-            <div className="flex flex-col py-8 gap-4 px-7 w-64 h-64 rounded-[23.947px] bg-gradient-to-br  from-[#F0DF86] to-[#98920E] cursor-pointer">
-              <div className="pl-28">
+            <WobbleCard
+              containerClassName="flex flex-col w-64 h-64 rounded-[23.947px] bg-gradient-to-br  from-[#F0DF86] to-[#98920E] cursor-pointer"
+              className="py-10"
+            >
+              <div className="pl-24 mb-4">
                 <MoneyRecive size="100" color="white" />
               </div>
               <h1 className="text-white text-2xl">
                 Currency <br />
                 Conversion
               </h1>
-            </div>
+            </WobbleCard>
             <div className="flex flex-col py-8 gap-4 px-7 w-64 h-64 bg-gradient-to-br rounded-[23.947px] from-[#86F0BD] to-[#0E984D] cursor-pointer">
               <div className="pl-28">
                 <Translate size="100" color="white" />
