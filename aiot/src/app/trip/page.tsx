@@ -1,14 +1,59 @@
-import { ArrowLeft } from "iconsax-react";
+import { ArrowLeft, Clock, DollarCircle, Sun1 } from "iconsax-react";
 import Image from "next/image";
 import Malaysia from "../../../assets/Malaysia images 1.png";
 
-
 export default function Trip() {
+
+    const arr = [
+        {
+            start: "13:00",
+            startTime: "DEL",
+            TotalTime: "03hr",
+            end: "16:00",
+            endTime: "COK"
+        },
+        {
+            start: "13:00",
+            startTime: "DEL",
+            TotalTime: "03hr",
+            end: "16:00",
+            endTime: "COK"
+        },
+        {
+            start: "13:00",
+            startTime: "DEL",
+            TotalTime: "03hr",
+            end: "16:00",
+            endTime: "COK"
+        },
+        {
+            start: "13:00",
+            startTime: "DEL",
+            TotalTime: "03hr",
+            end: "16:00",
+            endTime: "COK"
+        },
+        {
+            start: "13:00",
+            startTime: "DEL",
+            TotalTime: "03hr",
+            end: "16:00",
+            endTime: "COK"
+        },
+        {
+            start: "13:00",
+            startTime: "DEL",
+            TotalTime: "03hr",
+            end: "16:00",
+            endTime: "COK"
+        }
+    ]
+
     return (
         <div className="min-h-screen flex justify-center bg-[#F3F3F3]">
-            <div className="w-full md:w-[90%]">
-                <div className="flex m-2">
-                    <ArrowLeft size="24" color="#000" className="mx-2" />
+            <div className="w-full md:w-[90vw]">
+                <div className="flex m-2 ml-0">
+                    <ArrowLeft size="24" color="#000" className="mr-2" />
                     <p>Back</p>
                 </div>
                 <div className="items-center justify-center">
@@ -27,15 +72,85 @@ export default function Trip() {
                         </button>
                     </div>
 
-                    <div className="flex justify-between items-center bg-white rounded-md">
-                        <div className="flex justify-center items-center">
-                            <Image src={Malaysia}  alt="Malaysia" width={50} height={50}/>
-                            <div className="mx-4">
-                                <p className="text-gray-600 mx-auto text-left ">capital</p>
-                                <p className="font-gilroy text-black text-[30px] normal-case leading-normal tracking-[-1.8px]">Kuala Lampur</p>
+                    <div className="flex justify-between items-center">
+                        <div className="flex justify-left items-center p-6 mr-2 w-[375px] rounded-xl bg-white">
+                            <Image src={Malaysia} alt="Malaysia" width={50} height={50} className="mr-4" />
+                            <div className="">
+                                <p className="text-gray-600 mx-auto text-left">capital</p>
+                                <p className="font-gilroy text-black text-[1.5vw] normal-case leading-normal tracking-[-1px] -mt-1">
+                                    Kuala Lumpur
+                                </p>
                             </div>
                         </div>
-                        
+                        <div className="flex justify-left items-center p-6  mr-2 w-[295px] rounded-xl bg-white">
+                            <Clock size="32" color="#000" className="mx-4" />
+                            <div className="">
+                                <p className="text-gray-600 mx-auto text-left">Time</p>
+                                <p className="font-gilroy text-black text-[1.5vw] normal-case leading-normal tracking-[-1px] -mt-1">
+                                    20:45
+                                </p>
+                            </div>
+                        </div>
+                        <div className="flex justify-left items-center p-6  mr-2 w-[280px] rounded-xl bg-white">
+                            <DollarCircle size="32" color="#000" className="mx-4" />
+                            <div className="">
+                                <p className="text-gray-600 mx-auto text-left">1 Dollar</p>
+                                <p className="font-gilroy text-black text-[1.5vw] normal-case leading-normal tracking-[-1px] -mt-1">
+                                    82 Rupees
+                                </p>
+                            </div>
+                        </div>
+                        <div className="flex justify-left items-center p-6 rounded-xl bg-gradient-to-r from-[#6AE3FE] to-[#88B6E8] text-white ">
+                            <h1 className="font-gilroy text-[2vw] font-800 mx-2">27° C</h1>
+                            <div className="mx-2">
+                                <p className="text-gray-100 mx-auto text-sm text-center">Tuesday, 13 September</p>
+                                <p>Kuala Lampur, Malaysia</p>
+                            </div>
+                            <Sun1 size="32" color="#fff" className="mx-4" />
+                        </div>
+                    </div>
+                    <div className="flex items-center justify-between w-[90vw] py-8">
+                        <div className="bg-white shadow-lg rounded-lg p-6 w-[44.5vw]">
+                            <h2 className="font-gilroy text-black text-[2vw] normal-case leading-normal mb-4">Suggested Flight</h2>
+                            <div className="m-4">
+                                {arr.map((fl, i) => {
+                                    return <div className="flex  justify-between items-center">
+                                        <div className="text-center m-2">
+                                            <p>{fl.start}</p>
+                                            <p>{fl.startTime}</p>
+                                        </div>
+                                        <div className="grow border-b border-gray-400 m-4"></div>
+                                        <p>{fl.TotalTime}</p>
+                                        <div className="grow border-b border-gray-400 m-4"></div>
+                                        <div className="text-center m-2">
+                                            <p>{fl.end}</p>
+                                            <p>{fl.endTime}</p>
+                                        </div>
+                                    </div>
+                                })}
+                            </div>
+                        </div>
+
+                        <div className="bg-white shadow-lg rounded-lg p-6 w-[44.5vw]">
+                            <h2 className="font-gilroy text-black text-[2vw] normal-case leading-normal mb-4">Trains</h2>
+                            <div className="m-4">
+                                {arr.map((fl, i) => {
+                                    return <div className="flex  justify-between items-center">
+                                        <div className="text-center m-2">
+                                            <p>{fl.start}</p>
+                                            <p>{fl.startTime}</p>
+                                        </div>
+                                        <div className="grow border-b border-gray-400 m-4"></div>
+                                        <p>{fl.TotalTime}</p>
+                                        <div className="grow border-b border-gray-400 m-4"></div>
+                                        <div className="text-center m-2">
+                                            <p>{fl.end}</p>
+                                            <p>{fl.endTime}</p>
+                                        </div>
+                                    </div>
+                                })}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
