@@ -19,9 +19,9 @@ const NavBar = () => {
         </div>
 
         {/* Auth */}
-        <div className="flex gap-8 items-center">
-          <h1 className="text-1 text-xl">Log In</h1>
-          <button className="bg-1 text-xl font-light text-white px-7 py-1 rounded-full">
+        <div className="flex gap-5 items-center">
+          <h1 className="text-1 text-l">Log In</h1>
+          <button className="bg-1 text-l font-light text-white px-4 py-1 rounded-full">
             Sign Up
           </button>
         </div>
