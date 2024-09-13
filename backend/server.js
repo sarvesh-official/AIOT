@@ -7,6 +7,7 @@ const connectDB = require('./mongoConnect')
 const { userRouter } = require('./userRouter')
 const { searchTrains } = require('./searchTrain')
 const { searchFlights } = require('./searchFlight')
+const { getWeather } = require('./weather')
 
 const app = express()
 
@@ -29,6 +30,7 @@ app.get('/',(req,res) => {
 
     // searchTrains()
     // searchFlights()
+    getWeather()
     res.send("hello")
 })
 
