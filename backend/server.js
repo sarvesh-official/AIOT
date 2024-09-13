@@ -6,6 +6,7 @@ require('dotenv').config()
 const connectDB = require('./mongoConnect')
 const { userRouter } = require('./userRouter')
 const { searchTrains } = require('./searchTrain')
+const { searchFlights } = require('./searchFlight')
 
 const app = express()
 
@@ -26,7 +27,8 @@ app.use(cors())
 
 app.get('/',(req,res) => {
 
-    searchTrains()
+    // searchTrains()
+    // searchFlights()
     res.send("hello")
 })
 
