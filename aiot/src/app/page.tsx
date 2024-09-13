@@ -110,7 +110,7 @@ export default function Home() {
           <div className="w-full h-full pl-60 py-5">
             <h1 className="text-2xl">Services</h1>
           </div>
-          <div className="bg-white items-center rounded-lg px-24 py-8">
+          <div className="bg-white items-center rounded-2xl px-24 py-8">
             {/* Grid with 2 rows and 7 columns */}
             <div className="grid grid-cols-7 gap-14">
               {/* Cab Taxi */}

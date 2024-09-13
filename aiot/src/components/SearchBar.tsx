@@ -5,7 +5,7 @@ import { PlaceholdersAndVanishInput } from "./ui/placeholders-and-vanish-input";
 export function SearchBar() {
   const placeholders = [
     "Search For Services",
-    "Avaialable Flights",
+    "Available Flights",
     "Currency Conversion",
     "Shopping",
     "Food",
