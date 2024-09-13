@@ -64,10 +64,10 @@ export default function Trip() {
                         Malaysia is a Southeast Asian country occupying parts of the Malay Peninsula and the island of Borneo. It's known for its beaches, rainforests, and a mix of Malay, Chinese, Indian, and European cultural influences.
                     </p>
                     <div className="flex justify-center items-center">
-                        <button className="bg-transparent hover:opacity-80 text-[#A917FE] border-2 border-[#A917FE] font-bold h-12 px-16 rounded-full m-4">
+                        <button className="bg-transparent hover:opacity-80 text-[#A917FE] border-[1px] border-[#A917FE] font-light h-12 px-10 rounded-full m-4">
                             Regenerate
                         </button>
-                        <button className="bg-gradient-to-r from-[#A917FE] to-[#6C83FF] hover:opacity-80 text-white font-bold h-12 px-16 rounded-full m-4">
+                        <button className="bg-gradient-to-r from-[#A917FE] to-[#6C83FF] hover:opacity-80 text-white font-light h-12 px-11 rounded-full m-4">
                             Save Trip
                         </button>
                     </div>
