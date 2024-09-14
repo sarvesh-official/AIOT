@@ -5,6 +5,7 @@ import axios from "axios";
 
 import Link from "next/link";
 import { ArrowLeft, Clock, DollarCircle, Sun1 } from "iconsax-react";
+import Image from "next/image";
 
 interface FlightSearchParams {
   sourceAirportCode: string;
@@ -152,13 +153,13 @@ export default function Trip() {
 
                     <div className="flex justify-between items-center mt-2">
                         <div className="flex justify-left items-center p-6 mr-2 w-[24vw] rounded-xl bg-white">
-                            <Image
+                            {/* <Image
                                 src={Malaysia}
                                 alt="Malaysia"
                                 width={50}
                                 height={50}
                                 className="mr-4"
-                            />
+                            /> */}
                             <div className="">
                                 <p className="text-gray-600 mx-auto text-left">capital</p>
                                 <p className="font-gilroy text-black text-[1.5vw] normal-case leading-normal tracking-[-1px] -mt-1">
