@@ -1,5 +1,8 @@
-import Image from "next/image";
+"use client";
 import Link from "next/link";
+import Image from "next/image";
+import { SignedIn, useAuth } from "@clerk/nextjs";
+import { SignedOut, UserButton, UserProfile } from "@clerk/clerk-react";
 
 const NavBar = () => {
   return (
@@ -22,12 +25,32 @@ const NavBar = () => {
         </div>
 
         {/* Auth */}
-        <div className="flex gap-5 items-center">
-          <h1 className="text-1 text-l">Log In</h1>
-          <button className="bg-1 text-l font-light text-white px-4 py-1 rounded-full">
-            Sign Up
-          </button>
-        </div>
+        <SignedIn>
+          <div className="flex rounded-full items-center px-16">
+            <UserButton
+              appearance={{
+                elements: {
+                  userButtonAvatarBox: {
+                    width: "38px",
+                    height: "38px",
+                  },
+                },
+              }}
+            />
+          </div>
+        </SignedIn>
+        <SignedOut>
+          <div className="flex items-center gap-5">
+            <Link className="text-1 text-l" href={"/sign-in"}>
+              Log In
+            </Link>
+            <Link href={"/sign-up"}>
+              <button className="bg-1 text-l font-light text-white px-4 py-1 rounded-full">
+                Sign Up
+              </button>
+            </Link>
+          </div>
+        </SignedOut>
       </div>
     </nav>
   );
