@@ -1,47 +1,96 @@
-const express = require('express')
+const express = require("express");
 
-const cors = require('cors')
+const cors = require("cors");
 
-require('dotenv').config()
-const connectDB = require('./mongoConnect')
-const { userRouter } = require('./userRouter')
-const { searchTrains } = require('./searchTrain')
-const { searchFlights } = require('./searchFlight')
-const { getWeather } = require('./weather')
-const { searchRouter } = require('./searchRouter')
-const { currencyConverter } = require('./currencyConverter')
-const { Translator } = require('./translator')
+require("dotenv").config();
+const connectDB = require("./mongoConnect");
+const { userRouter } = require("./userRouter");
+const { searchTrains } = require("./searchTrain");
+const { searchFlights } = require("./searchFlight");
+const { getWeather } = require("./weather");
+const { searchRouter } = require("./searchRouter");
+const { currencyConverter } = require("./currencyConverter");
+const { Translator } = require("./translator");
 
-const app = express()
+const app = express();
+app.use(cors());
+app.use(express.json());
+const port = process.env.PORT || 6969;
+const axios = require("axios");
 
-app.use(cors())
-app.use(express.json())
+connectDB();
 
-const port = process.env.PORT || 3001
+app.use("/api/users", userRouter);
+app.use("/api/search", searchRouter);
 
-connectDB()
+app.put("/convert", async (req, res) => {
+  const { from, to, amount } = req.body; // Extract from request body
 
-app.use('/api/users', userRouter)
-app.use('/api/search', searchRouter)
+  if (!from || !to || !amount) {
+    return res.status(400).send({ error: "Missing parameters" });
+  }
 
-// const requestLogger = (req, res, next) => {
-//     console.log('hello');
-//     next();
-// };
+  const apiKey = process.env.API_KEY;
+  const externalUserId = process.env.EXTERNAL_USER_ID;
 
-// app.use(requestLogger)
+  const query = `Convert ${amount} ${from} into ${to} and just give the converted value as a float type no other explanation needed`;
 
+  try {
+    const sessionId = await createChatSession(apiKey, externalUserId);
+    const queryResponse = await submitQuery(apiKey, sessionId, query);
 
-app.get('/',(req,res) => {
+    // Extracting result from the response (adjust based on actual response structure)
+    const result = queryResponse.data.answer;
 
-    // searchTrains()
-    // searchFlights()
-    // getWeather()
-    // currencyConverter()
-    // Translator()
-    res.send("hello")
-})
+    res.status(200).send({ result });
+  } catch (error) {
+    console.error("Error in currency conversion:", error);
+    res.status(500).send({ error: "Error in currency conversion" });
+  }
+});
 
-app.listen(port , () => {
-    console.log("hello bruh")
-})
+async function createChatSession(apiKey, externalUserId) {
+  const url = "https://api.on-demand.io/chat/v1/sessions";
+  const headers = { apikey: apiKey };
+  const body = { pluginIds: [], externalUserId: externalUserId };
+
+  try {
+    const response = await axios.post(url, body, { headers });
+    return response.data.data.id;
+  } catch (error) {
+    console.error("Error creating chat session:", error);
+    throw error;
+  }
+}
+
+async function submitQuery(apiKey, sessionId, query) {
+  const url = `https://api.on-demand.io/chat/v1/sessions/${sessionId}/query`;
+  const headers = { apikey: apiKey };
+  const body = {
+    endpointId: "predefined-openai-gpt4o",
+    query: query,
+    pluginIds: ["plugin-1712327325", "plugin-1713962163"],
+    responseMode: "sync",
+  };
+
+  try {
+    const response = await axios.post(url, body, { headers });
+    return response.data;
+  } catch (error) {
+    console.error("Error submitting query:", error);
+    throw error;
+  }
+}
+
+app.get("/", (req, res) => {
+  // searchTrains()
+  // searchFlights()
+  // getWeather()
+  // currencyConverter()
+  // Translator()
+  res.send("hello");
+});
+
+app.listen(port, () => {
+  console.log("hello bruh");
+});

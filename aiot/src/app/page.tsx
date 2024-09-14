@@ -3,8 +3,8 @@ import NavBar from "@/components/NavBar";
 import { SearchBar } from "@/components/SearchBar";
 import { WobbleCard } from "@/components/ui/wobble-card";
 import { WobbleComponent } from "@/components/WobbleComponent";
+import { CardHoverEffectDemo } from "@/components/ui/card-hover-effect";
 import Link from "next/link";
-
 import {
   Airplane,
   Bank,
@@ -24,6 +24,7 @@ import {
   Translate,
   WalletMinus,
 } from "iconsax-react";
+import { AnimatedTooltipPreview } from "@/components/AnimatedToolTip";
 
 export default function Home() {
   return (
@@ -83,32 +84,32 @@ export default function Home() {
               </h1>
             </WobbleCard>
             <Link href={"/conversion"}>
-            <WobbleCard
-              containerClassName="flex flex-col w-64 h-64 rounded-[23.947px] bg-gradient-to-br  from-[#F0DF86] to-[#98920E] cursor-pointer"
-              className="py-10"
-            >
-              <div className="pl-24 mb-4">
-                <MoneyRecive size="100" color="white" />
-              </div>
-              <h1 className="text-white text-2xl">
-                Currency <br />
-                Conversion
-              </h1>
-            </WobbleCard>
+              <WobbleCard
+                containerClassName="flex flex-col w-64 h-64 rounded-[23.947px] bg-gradient-to-br  from-[#F0DF86] to-[#98920E] cursor-pointer"
+                className="py-10"
+              >
+                <div className="pl-24 mb-4">
+                  <MoneyRecive size="100" color="white" />
+                </div>
+                <h1 className="text-white text-2xl">
+                  Currency <br />
+                  Conversion
+                </h1>
+              </WobbleCard>
             </Link>
             <Link href={"/translate"}>
-            <WobbleCard
-              containerClassName="flex flex-col w-64 h-64 rounded-[23.947px] bg-gradient-to-br  from-[#86F0BD] to-[#0E984D] cursor-pointer"
-              className="py-10"
-            >
-              <div className="pl-24 mb-4">
-                <Translate size="100" color="white" />
-              </div>
-              <h1 className="text-white text-2xl">
-                Translate <br />
-                Speech
-              </h1>
-            </WobbleCard>
+              <WobbleCard
+                containerClassName="flex flex-col w-64 h-64 rounded-[23.947px] bg-gradient-to-br  from-[#86F0BD] to-[#0E984D] cursor-pointer"
+                className="py-10"
+              >
+                <div className="pl-24 mb-4">
+                  <Translate size="100" color="white" />
+                </div>
+                <h1 className="text-white text-2xl">
+                  Translate <br />
+                  Speech
+                </h1>
+              </WobbleCard>
             </Link>
           </div>
         </div>
@@ -231,6 +232,16 @@ export default function Home() {
           <WobbleComponent />
         </div>
       </main>
+      <div className="text-center">
+        <h1 className="text-5xl">Meet the Creators</h1>
+        <div className="mt-6">
+          <AnimatedTooltipPreview />
+        </div>
+      </div>
+      {/* <div className="mt-24">
+        <h1 className="text-5xl text-center">API's Used</h1>
+        <CardHoverEffectDemo />
+      </div> */}
     </>
   );
 }
