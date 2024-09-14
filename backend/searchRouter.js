@@ -1,12 +1,10 @@
+const express = require("express");
+const { getFlights, translate } = require("./handler");
 
-const express = require('express')
-const { getFlights } = require('./handler')
+const searchRouter = express.Router();
 
-const searchRouter = express.Router()
+searchRouter.use("/trip", getFlights);
 
-searchRouter.use('/trip', getFlights )
+searchRouter.use("/translate", translate);
 
-module.exports = {searchRouter}
-
-
-
+module.exports = { searchRouter };

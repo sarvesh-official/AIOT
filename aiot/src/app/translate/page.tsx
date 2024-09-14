@@ -1,9 +1,77 @@
+"use client";
+import axios from "axios";
 import { ArrowLeft, Translate as TranslateIcon } from "iconsax-react"; // Rename the imported Translate
-import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 
 export default function TranslatePage() {
-  // Rename the local component
+  const languages = [
+    "English",
+    "Spanish",
+    "French",
+    "German",
+    "Italian",
+    "Portuguese",
+    "Dutch",
+    "Russian",
+    "Chinese (Simplified and Traditional)",
+    "Japanese",
+    "Korean",
+    "Arabic",
+    "Hindi",
+    "Bengali",
+    "Turkish",
+    "Vietnamese",
+    "Thai",
+    "Greek",
+    "Polish",
+    "Swedish",
+    "Norwegian",
+    "Danish",
+    "Finnish",
+    "Hungarian",
+    "Czech",
+    "Romanian",
+    "Hebrew",
+    "Indonesian",
+    "Malay",
+    "Filipino",
+    "Ukrainian",
+    "Serbian",
+    "Croatian",
+    "Bulgarian",
+    "Slovak",
+    "Persian (Farsi)",
+    "Urdu",
+    "Swahili",
+    "Tamil",
+    "Telugu",
+  ];
+
+  const [from, setFrom] = useState(languages[0]);
+  const [to, setTo] = useState(languages[0]);
+  const [text, setText] = useState("");
+  const [res, setRes] = useState("");
+
+  const translate = async () => {
+    try {
+      const response = await axios.post(
+        "http://localhost:6969/api/search/translate",
+        { text: `Translate '${text}' which is in ${from} into ${to} language` }
+      );
+      console.log("response: ", response);
+      console.log(response.data);
+      setRes(response.data.data.answer);
+
+      if (response.status === 200) {
+        console.log("Response data:", response.data);
+      } else {
+        console.error(`Unexpected response status: ${response.status}`);
+      }
+    } catch (error) {
+      console.error("Error fetching translation:", error);
+    }
+  };
   return (
     <div className="min-h-screen flex justify-center bg-[#F3F3F3] mt-12">
       <div className="w-full md:w-[90vw]">
@@ -25,36 +93,57 @@ export default function TranslatePage() {
           </p>
         </div>
         <div className="flex justify-between items-center mt-12">
-          <div className="flex justify-left items-center p-4 pl-8 mr-2 w-[44.5vw] rounded-xl bg-white">
-            <TranslateIcon
-              size="32"
-              color="#000"
-              width={50}
-              height={50}
-              className="mr-4"
-            />{" "}
-            {/* Use renamed icon */}
-            <div className="">
-              <p className="text-gray-600 mx-auto text-left">Language</p>
-              <p className="font-gilroy text-black text-[1.2vw] normal-case leading-normal tracking-[-1px] -mt-1">
-                Kuala Lumpur
-              </p>
+          <div className="flex space-y-4">
+            <div className="flex justify-left items-center p-4 pl-8 mr-2 w-[44.5vw] rounded-xl bg-white">
+              <TranslateIcon
+                size="32"
+                color="#000"
+                width={50}
+                height={50}
+                className="mr-4"
+              />
+              <div className="">
+                <p className="text-gray-600 mx-auto text-left">From Language</p>
+                <select
+                  title="select_from"
+                  className="border-2 rounded-lg w-full p-2 text-left"
+                  onChange={(e) => {
+                    setFrom(e.target.value);
+                  }}
+                >
+                  {languages.map((language, index) => (
+                    <option key={index} value={language}>
+                      {language}
+                    </option>
+                  ))}
+                </select>
+              </div>
             </div>
-          </div>
-          <div className="flex justify-left items-center p-4 pl-8 mr-2 w-[44.5vw] rounded-xl bg-white">
-            <TranslateIcon
-              size="32"
-              color="#000"
-              width={50}
-              height={50}
-              className="mr-4"
-            />{" "}
-            {/* Use renamed icon */}
-            <div className="">
-              <p className="text-gray-600 mx-auto text-left">Language</p>
-              <p className="font-gilroy text-black text-[1.2vw] normal-case leading-normal tracking-[-1px] -mt-1">
-                Kuala Lumpur
-              </p>
+
+            <div className="flex justify-left items-center p-4 pl-8 mr-2 w-[44.5vw] rounded-xl bg-white">
+              <TranslateIcon
+                size="32"
+                color="#000"
+                width={50}
+                height={50}
+                className="mr-4"
+              />
+              <div className="">
+                <p className="text-gray-600 mx-auto text-left">To Language</p>
+                <select
+                  title="select_to"
+                  className="border-2 rounded-lg w-full p-2 text-left"
+                  onChange={(e) => {
+                    setTo(e.target.value);
+                  }}
+                >
+                  {languages.map((language, index) => (
+                    <option key={index} value={language}>
+                      {language}
+                    </option>
+                  ))}
+                </select>
+              </div>
             </div>
           </div>
         </div>
@@ -63,13 +152,22 @@ export default function TranslatePage() {
             <textarea
               placeholder="Type here..."
               className="border-2 w-[95%] rounded-lg p-4 text-left flex-wrap h-[40vh]"
+              onChange={(e) => {
+                setText(e.target.value);
+              }}
             />
-            <button className="bg-gradient-to-r from-[#A917FE] to-[#6C83FF] hover:opacity-80 text-white font-bold h-12 px-16 rounded-full m-4 ml-[70%]">
+            <button
+              className="bg-gradient-to-r from-[#A917FE] to-[#6C83FF] hover:opacity-80 text-white font-bold h-12 px-16 rounded-full m-4"
+              onClick={() => {
+                console.log("executed");
+                translate();
+              }}
+            >
               Translate
             </button>
           </div>
           <div className="flex justify-center items-center p-4 mr-2 w-[44.5vw] rounded-xl bg-white">
-            <div className="border-2 w-[95%] h-[50vh] rounded-lg"></div>
+            <div className="border-2 w-[95%] h-[50vh] rounded-lg">{res}</div>
           </div>
         </div>
       </div>

@@ -1,9 +1,9 @@
+"use client";
 import { AnimatedModal } from "@/components/AnimatedModal";
 import NavBar from "@/components/NavBar";
 import { SearchBar } from "@/components/SearchBar";
 import { WobbleCard } from "@/components/ui/wobble-card";
 import { WobbleComponent } from "@/components/WobbleComponent";
-import { CardHoverEffectDemo } from "@/components/ui/card-hover-effect";
 import Link from "next/link";
 import {
   Airplane,
@@ -25,8 +25,11 @@ import {
   WalletMinus,
 } from "iconsax-react";
 import { AnimatedTooltipPreview } from "@/components/AnimatedToolTip";
+import { useState } from "react";
 
 export default function Home() {
+  const [searchResult, setSearchResult] = useState<any>(null); // State to hold the search result
+
   return (
     <>
       <NavBar />
@@ -49,7 +52,7 @@ export default function Home() {
               className="pl-10 text-sm py-1 pr-[600px] border-none focus:outline-none focus:ring-0"
             />
           </form> */}
-          <SearchBar />
+          <SearchBar onSearchResult={setSearchResult} />
         </div>
         {/* Featured */}
         <div className="flex items-center flex-col py-10">
@@ -71,18 +74,20 @@ export default function Home() {
                 </h1>
               </WobbleCard>
             </AnimatedModal>
-            <WobbleCard
-              containerClassName="flex flex-col w-64 h-64 rounded-[23.947px] bg-gradient-to-br  from-[#86F0F0] to-[#0E5E98] cursor-pointer"
-              className="py-10"
-            >
-              <div className="pl-24 mb-4">
-                <Location size="100" color="white" />
-              </div>
-              <h1 className="text-white text-2xl">
-                Saved <br />
-                Destination
-              </h1>
-            </WobbleCard>
+            <Link href={"/saved"}>
+              <WobbleCard
+                containerClassName="flex flex-col w-64 h-64 rounded-[23.947px] bg-gradient-to-br  from-[#86F0F0] to-[#0E5E98] cursor-pointer"
+                className="py-10"
+              >
+                <div className="pl-24 mb-4">
+                  <Location size="100" color="white" />
+                </div>
+                <h1 className="text-white text-2xl">
+                  Saved <br />
+                  Destination
+                </h1>
+              </WobbleCard>
+            </Link>
             <Link href={"/conversion"}>
               <WobbleCard
                 containerClassName="flex flex-col w-64 h-64 rounded-[23.947px] bg-gradient-to-br  from-[#F0DF86] to-[#98920E] cursor-pointer"
