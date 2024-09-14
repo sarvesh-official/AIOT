@@ -91,6 +91,30 @@ app.get("/", (req, res) => {
   res.send("hello");
 });
 
+app.put("/search", async (req, res) => {
+  const { query } = req.body;
+
+  if (!query) {
+    return res
+      .status(400)
+      .json({ error: "externalUserId and query are required" });
+  }
+
+  try {
+    // Create a chat session with the given external user ID
+    const sessionId = await createChatSession(externalUserId);
+
+    // Submit the query to the chat session
+    const queryResponse = await submitQuery(sessionId, query);
+
+    // Send the response back to the user
+    res.status(200).json({ success: true, response: queryResponse });
+  } catch (error) {
+    console.error("Error in route handler:", error);
+    res.status(500).json({ success: false, error: "Internal server error" });
+  }
+});
+
 app.listen(port, () => {
   console.log("hello bruh");
 });
