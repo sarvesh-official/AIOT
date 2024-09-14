@@ -126,9 +126,9 @@ export default function Trip() {
           </div>
         </Link>
 
-        <div>
+        {/* <div>
           <p className="my-12 text-red-600">{data}</p>
-        </div>
+        </div> */}
 
         <div className="items-center justify-center">
           <h1 className="font-gilroy text-[6vw] sm:text-[5vw] md:text-[5vw] lg:text-[6vw] font-normal leading-[1.2] sm:leading-[1.1] md:leading-[1] tracking-[-0.06em] text-center">
