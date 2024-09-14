@@ -26,15 +26,33 @@ app.use("/api/search", searchRouter);
 app.put("/convert", async (req, res) => {
   const { from, to, amount } = req.body;
 
+  async function ConvertQuery(apiKey, sessionId, query) {
+    const url = `https://api.on-demand.io/chat/v1/sessions/${sessionId}/query`;
+    const headers = { apikey: apiKey };
+    const body = {
+      endpointId: "predefined-openai-gpt4o",
+      query: query,
+      pluginIds: ["plugin-1712327325", "plugin-1713962163"],
+      responseMode: "sync",
+    };
+
+    try {
+      const response = await axios.post(url, body, { headers });
+      return response.data;
+    } catch (error) {
+      console.error("Error submitting query:", error);
+      throw error;
+    }
+  }
   if (!from || !to || !amount) {
     return res.status(400).send({ error: "Missing parameters" });
   }
 
-  const query = `Convert ${amount} ${from} into ${to} and just give the converted value as a float type, no other explanation needed`;
+  const query = `Convert ${amount} ${from} into ${to} and just give the converted value as a float type, no other explanation needed even if it is approximate`;
 
   try {
     const sessionId = await createChatSession(apiKey, externalUserId);
-    const queryResponse = await submitQuery(apiKey, sessionId, query);
+    const queryResponse = await ConvertQuery(apiKey, sessionId, query);
 
     console.log("Query Response:", queryResponse);
 

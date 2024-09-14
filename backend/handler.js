@@ -1,7 +1,6 @@
 const User = require("./userModel");
 
 const searchFlightsRes = require("./searchFlight");
-const { currencyConverter } = require("./currencyConverter");
 const { Translator } = require("./translator");
 const getAllUsers = async (req, res) => {
   try {

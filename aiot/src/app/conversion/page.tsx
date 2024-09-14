@@ -34,7 +34,7 @@ const CurrencyConverterPage = () => {
   // Handle conversion
   const handleConvert = async () => {
     try {
-      const response = await fetch("https://aiot-backend.vercel.app/convert", {
+      const response = await fetch("http://localhost:6969/convert", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -81,7 +81,9 @@ const CurrencyConverterPage = () => {
                 <p className="text-gray-600 mx-auto text-left">From</p>
                 <select
                   value={fromCurrency}
-                  onChange={(e) => setFromCurrency(e.target.value)}
+                  onChange={(e) => {
+                    setFromCurrency(e.target.value);
+                  }}
                   className="font-gilroy text-black text-[1.2vw] normal-case leading-normal tracking-[-1px] -mt-1"
                 >
                   {Object.entries(currencies).map(([code, name]) => (
