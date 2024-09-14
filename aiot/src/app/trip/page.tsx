@@ -2,9 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useRouter } from "next/navigation";
-import Image from "next/image";
-import Malaysia from "../../../assets/Malaysia images 1.png";
+
 import Link from "next/link";
 import { ArrowLeft, Clock, DollarCircle, Sun1 } from "iconsax-react";
 
@@ -36,7 +34,7 @@ export default function Trip() {
   const fetchFlights = async (searchParams: FlightSearchParams) => {
     try {
       const response = await axios.get(
-        "http://localhost:6969/api/search/trip",
+        "https://aiot-backend.vercel.app/api/search/trip",
         {
           params: {
             source: searchParams.sourceAirportCode,
