@@ -2,95 +2,95 @@
 
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useRouter } from 'next/navigation';
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Malaysia from "../../../assets/Malaysia images 1.png";
 import Link from "next/link";
 import { ArrowLeft, Clock, DollarCircle, Sun1 } from "iconsax-react";
 
 interface FlightSearchParams {
-    sourceAirportCode: string;
-    destinationAirportCode: string;
-    date: string;
-    currencyCode?: string;
-    region?: string;
+  sourceAirportCode: string;
+  destinationAirportCode: string;
+  date: string;
+  currencyCode?: string;
+  region?: string;
 }
 
 export default function Trip() {
-    const [data, setData] = useState([]);
-    const [from, setFrom] = useState<string | null>(null);
-    const [to, setTo] = useState<string | null>(null);
-    const [date, setDate] = useState<string | null>(null);
+  const [data, setData] = useState([]);
+  const [from, setFrom] = useState<string | null>(null);
+  const [to, setTo] = useState<string | null>(null);
+  const [date, setDate] = useState<string | null>(null);
 
-    useEffect(() => {
-        const searchParams = new URLSearchParams(window.location.search);
-        const fromParam = searchParams.get("from");
-        const toParam = searchParams.get("to");
-        const dateParam = searchParams.get("date");
+  useEffect(() => {
+    const searchParams = new URLSearchParams(window.location.search);
+    const fromParam = searchParams.get("from");
+    const toParam = searchParams.get("to");
+    const dateParam = searchParams.get("date");
 
-        setFrom(fromParam);
-        setTo(toParam);
-        setDate(dateParam);
-    }, []);
+    setFrom(fromParam);
+    setTo(toParam);
+    setDate(dateParam);
+  }, []);
 
-    const fetchFlights = async (searchParams: FlightSearchParams) => {
-        try {
-            const response = await axios.get("http://localhost:6969/api/search/trip", {
-                params: {
-                    source: searchParams.sourceAirportCode,
-                    destination: searchParams.destinationAirportCode,
-                    date: searchParams.date,
-                },
-            });
-    
-            // Check if the response status is 200
-            if (response.status === 200) {
-                console.log('Response data:', response.data);
-                // Set the data to state or handle as needed
-                setData(response.data);
-            } else {
-                console.error(`Unexpected response status: ${response.status}`);
-            }
-        } catch (error) {
-            // Handle network or other errors
-            console.error("Error fetching flights:", error);
-            // Optionally set an error state to display to the user
+  const fetchFlights = async (searchParams: FlightSearchParams) => {
+    try {
+      const response = await axios.get(
+        "http://localhost:6969/api/search/trip",
+        {
+          params: {
+            source: searchParams.sourceAirportCode,
+            destination: searchParams.destinationAirportCode,
+            date: searchParams.date,
+          },
         }
-    };
-    
-    
+      );
 
-    useEffect(() => {
-        if (from && to && date) {
-            const searchParams: FlightSearchParams = {
-                sourceAirportCode: from,
-                destinationAirportCode: to,
-                date: date,
-            };
-            fetchFlights(searchParams);
-        }
-    }, [from, to, date]);
+      // Check if the response status is 200
+      if (response.status === 200) {
+        console.log("Response data:", response.data);
+        // Set the data to state or handle as needed
+        setData(response.data);
+      } else {
+        console.error(`Unexpected response status: ${response.status}`);
+      }
+    } catch (error) {
+      // Handle network or other errors
+      console.error("Error fetching flights:", error);
+      // Optionally set an error state to display to the user
+    }
+  };
 
-    return (
-        <div className="min-h-screen flex justify-center bg-[#F3F3F3] mt-12">
-            <div className="w-full md:w-[90vw]">
-                <Link href={"/"}>
-                    <div className="flex m-2 ml-0">
-                        <ArrowLeft size="24" color="#000" className="mr-2" />
-                        <p>Back</p>
-                    </div>
-                </Link>
-                <div>
-                    <p>{data}</p>
-                </div>
-                
-            </div>
+  useEffect(() => {
+    if (from && to && date) {
+      const searchParams: FlightSearchParams = {
+        sourceAirportCode: from,
+        destinationAirportCode: to,
+        date: date,
+      };
+      fetchFlights(searchParams);
+    }
+  }, [from, to, date]);
+
+  return (
+    <div className="min-h-screen flex justify-center bg-[#F3F3F3] mt-12">
+      <div className="w-full md:w-[90vw]">
+        <Link href={"/"}>
+          <div className="flex m-2 ml-0">
+            <ArrowLeft size="24" color="#000" className="mr-2" />
+            <p>Back</p>
+          </div>
+        </Link>
+        <div>
+          <p>{data}</p>
         </div>
-    );
+      </div>
+    </div>
+  );
 }
 
-
-{/* <div className="items-center justify-center">
+{
+  /* <div className="items-center justify-center">
                     <h1 className="font-gilroy text-[6vw] sm:text-[5vw] md:text-[5vw] lg:text-[6vw] font-normal leading-[1.2] sm:leading-[1.1] md:leading-[1] tracking-[-0.06em] text-center">
                         Malaysia
                     </h1>
@@ -191,12 +191,13 @@ export default function Trip() {
                                     return (
                                         <div key={i} className="flex justify-between items-center">
                                             <div className="text-center m-2">
-                                                {/* Adjust the rendering as needed */}
-                //                             </div>
-                //                         </div>
-                //                     );
-                //                 })}
-                //             </div>
-                //         </div>
-                //     </div>
-                // </div> */}
+                                                {/* Adjust the rendering as needed */
+}
+//                             </div>
+//                         </div>
+//                     );
+//                 })}
+//             </div>
+//         </div>
+//     </div>
+// </div> */}
