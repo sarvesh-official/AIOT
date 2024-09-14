@@ -2,18 +2,18 @@
 
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useRouter } from 'next/navigation';
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Malaysia from "../../../assets/Malaysia images 1.png";
 import Link from "next/link";
 import { ArrowLeft, Clock, DollarCircle, Sun1 } from "iconsax-react";
 
 interface FlightSearchParams {
-    sourceAirportCode: string;
-    destinationAirportCode: string;
-    date: string;
-    currencyCode?: string;
-    region?: string;
+  sourceAirportCode: string;
+  destinationAirportCode: string;
+  date: string;
+  currencyCode?: string;
+  region?: string;
 }
 
 export default function Trip() {
@@ -67,54 +67,55 @@ export default function Trip() {
         }
     ]
 
-    useEffect(() => {
-        const searchParams = new URLSearchParams(window.location.search);
-        const fromParam = searchParams.get("from");
-        const toParam = searchParams.get("to");
-        const dateParam = searchParams.get("date");
+  useEffect(() => {
+    const searchParams = new URLSearchParams(window.location.search);
+    const fromParam = searchParams.get("from");
+    const toParam = searchParams.get("to");
+    const dateParam = searchParams.get("date");
 
-        setFrom(fromParam);
-        setTo(toParam);
-        setDate(dateParam);
-    }, []);
+    setFrom(fromParam);
+    setTo(toParam);
+    setDate(dateParam);
+  }, []);
 
-    const fetchFlights = async (searchParams: FlightSearchParams) => {
-        try {
-            const response = await axios.get("http://localhost:6969/api/search/trip", {
-                params: {
-                    source: searchParams.sourceAirportCode,
-                    destination: searchParams.destinationAirportCode,
-                    date: searchParams.date,
-                },
-            });
-    
-            // Check if the response status is 200
-            if (response.status === 200) {
-                console.log('Response data:', response.data);
-                // Set the data to state or handle as needed
-                setData(response.data);
-            } else {
-                console.error(`Unexpected response status: ${response.status}`);
-            }
-        } catch (error) {
-            // Handle network or other errors
-            console.error("Error fetching flights:", error);
-            // Optionally set an error state to display to the user
+  const fetchFlights = async (searchParams: FlightSearchParams) => {
+    try {
+      const response = await axios.get(
+        "http://localhost:6969/api/search/trip",
+        {
+          params: {
+            source: searchParams.sourceAirportCode,
+            destination: searchParams.destinationAirportCode,
+            date: searchParams.date,
+          },
         }
-    };
-    
-    
+      );
 
-    useEffect(() => {
-        if (from && to && date) {
-            const searchParams: FlightSearchParams = {
-                sourceAirportCode: from,
-                destinationAirportCode: to,
-                date: date,
-            };
-            fetchFlights(searchParams);
-        }
-    }, [from, to, date]);
+      // Check if the response status is 200
+      if (response.status === 200) {
+        console.log("Response data:", response.data);
+        // Set the data to state or handle as needed
+        setData(response.data);
+      } else {
+        console.error(`Unexpected response status: ${response.status}`);
+      }
+    } catch (error) {
+      // Handle network or other errors
+      console.error("Error fetching flights:", error);
+      // Optionally set an error state to display to the user
+    }
+  };
+
+  useEffect(() => {
+    if (from && to && date) {
+      const searchParams: FlightSearchParams = {
+        sourceAirportCode: from,
+        destinationAirportCode: to,
+        date: date,
+      };
+      fetchFlights(searchParams);
+    }
+  }, [from, to, date]);
 
     return (
         <div className="min-h-screen flex justify-center bg-[#F3F3F3] mt-12">

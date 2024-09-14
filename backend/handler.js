@@ -1,14 +1,14 @@
 const User = require("./userModel");
 
 const searchFlightsRes = require('./searchFlight')
-
+const { currencyConverter } = require("./currencyConverter");
 const getAllUsers = async (req, res) => {
-    try {
-        const users = await User.find();
-        res.status(200).json(users);
-    } catch (error) {
-        res.status(500).json({ message: 'Error retrieving users', error });
-    }
+  try {
+    const users = await User.find();
+    res.status(200).json(users);
+  } catch (error) {
+    res.status(500).json({ message: "Error retrieving users", error });
+  }
 };
 
 const getFlights = async (req, res) => {
@@ -42,4 +42,4 @@ const getFlights = async (req, res) => {
     }
 };
 
-module.exports = {getAllUsers, getFlights}
+module.exports = { getAllUsers, getFlights };
