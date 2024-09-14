@@ -1,5 +1,8 @@
 const User = require("./userModel");
 
+const searchFlights = require('./searchFlight')
+
+
 
 const getAllUsers = async (req, res) => {
     try {
@@ -10,5 +13,15 @@ const getAllUsers = async (req, res) => {
     }
 };
 
+const getFlights = async (req , res) =>{
+    try {
+        const data = searchFlights();
+        res.send({'data' : data})
+    } catch (error) {
+        throw new Error(error)
+        console.log('error: ', error);
+    }
+}
 
-module.exports = {getAllUsers}
+
+module.exports = {getAllUsers, getFlights}

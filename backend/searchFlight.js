@@ -43,6 +43,7 @@ async function submitQuery(sessionId) {
       }
     );
     console.log('Query response:', response.data);
+    return response.data
   } catch (error) {
     console.error('Error submitting query:', error);
   }

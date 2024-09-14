@@ -1,54 +1,66 @@
+"use client";
+
+import React, { useState } from "react";
+
+import axios from "axios";
+
 import { ArrowLeft, Clock, DollarCircle, Sun1 } from "iconsax-react";
 import Image from "next/image";
 import Malaysia from "../../../assets/Malaysia images 1.png";
 import Link from "next/link";
 
-export default function Trip() {
-  const arr = [
-    {
-      start: "13:00",
-      startTime: "DEL",
-      TotalTime: "03hr",
-      end: "16:00",
-      endTime: "COK",
-    },
-    {
-      start: "13:00",
-      startTime: "DEL",
-      TotalTime: "03hr",
-      end: "16:00",
-      endTime: "COK",
-    },
-    {
-      start: "13:00",
-      startTime: "DEL",
-      TotalTime: "03hr",
-      end: "16:00",
-      endTime: "COK",
-    },
-    {
-      start: "13:00",
-      startTime: "DEL",
-      TotalTime: "03hr",
-      end: "16:00",
-      endTime: "COK",
-    },
-    {
-      start: "13:00",
-      startTime: "DEL",
-      TotalTime: "03hr",
-      end: "16:00",
-      endTime: "COK",
-    },
-    {
-      start: "13:00",
-      startTime: "DEL",
-      TotalTime: "03hr",
-      end: "16:00",
-      endTime: "COK",
-    },
-  ];
+interface FlightSearchParams {
+    sourceAirportCode: string;
+    destinationAirportCode: string;
+    date: string;
+    itineraryType?: string;
+    sortOrder?: string;
+    numAdults?: number;
+    numSeniors?: number;
+    classOfService?: string;
+    pageNumber?: number;
+    nearby?: string;
+    nonstop?: string;
+    currencyCode?: string;
+    region?: string;
+  }
 
+export default function Trip() {
+
+  const [data, setData] = useState([]);
+
+  // Function to get flight search results
+  const fetchFlights = async(params: FlightSearchParams)  => {
+    try {
+      const response = await axios.get(`${process.env.NEXT_DEPLOYED_LINK}/api/search/flights`, { params });
+      console.log(`${process.env.NEXT_DEPLOYED_LINK}/api/search/flights`)
+      return response.data; // Return the data from the response
+    } catch (error) {
+      // Handle the error
+      console.error("Error fetching flights:", error);
+      throw error; // Re-throw the error if you want to handle it further up the chain
+    }
+  }
+
+  // Example usage of fetchFlights function
+  async function searchFlights() {
+    const searchParams = {
+      sourceAirportCode: "BOM",
+      destinationAirportCode: "DEL",
+      date: "2024-09-14",
+    };
+
+    try {
+      const fetchData = await fetchFlights(searchParams);
+      setData(fetchData)
+      console.log("Flight search results:", data);
+    } catch (error) {
+      console.error("Error in searchFlights function:", error);
+    }
+  }
+
+  searchFlights();
+    
   return (
     <div className="min-h-screen flex justify-center bg-[#F3F3F3] mt-12">
       <div className="w-full md:w-[90vw]">
