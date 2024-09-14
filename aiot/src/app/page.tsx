@@ -3,6 +3,7 @@ import NavBar from "@/components/NavBar";
 import { SearchBar } from "@/components/SearchBar";
 import { WobbleCard } from "@/components/ui/wobble-card";
 import { WobbleComponent } from "@/components/WobbleComponent";
+import Link from "next/link";
 
 import {
   Airplane,
@@ -81,6 +82,7 @@ export default function Home() {
                 Destination
               </h1>
             </WobbleCard>
+            <Link href={"/conversion"}>
             <WobbleCard
               containerClassName="flex flex-col w-64 h-64 rounded-[23.947px] bg-gradient-to-br  from-[#F0DF86] to-[#98920E] cursor-pointer"
               className="py-10"
@@ -93,6 +95,8 @@ export default function Home() {
                 Conversion
               </h1>
             </WobbleCard>
+            </Link>
+            <Link href={"/translate"}>
             <WobbleCard
               containerClassName="flex flex-col w-64 h-64 rounded-[23.947px] bg-gradient-to-br  from-[#86F0BD] to-[#0E984D] cursor-pointer"
               className="py-10"
@@ -105,6 +109,7 @@ export default function Home() {
                 Speech
               </h1>
             </WobbleCard>
+            </Link>
           </div>
         </div>
         {/* Services */}

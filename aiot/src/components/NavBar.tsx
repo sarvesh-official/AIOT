@@ -21,7 +21,7 @@ const NavBar = () => {
           <Link href="/">Home</Link>
           <Link href="">Saved Destinations</Link>
           <Link href="/translate">Translate</Link>
-          <Link href="">Forex</Link>
+          <Link href="/conversion">Forex</Link>
         </div>
 
         {/* Auth */}
