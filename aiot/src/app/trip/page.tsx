@@ -5,6 +5,7 @@ import axios from "axios";
 
 import Link from "next/link";
 import { ArrowLeft, Clock, DollarCircle, Sun1 } from "iconsax-react";
+import Image from "next/image";
 
 interface FlightSearchParams {
   sourceAirportCode: string;
@@ -15,10 +16,55 @@ interface FlightSearchParams {
 }
 
 export default function Trip() {
-  const [data, setData] = useState([]);
-  const [from, setFrom] = useState<string | null>(null);
-  const [to, setTo] = useState<string | null>(null);
-  const [date, setDate] = useState<string | null>(null);
+    const [data, setData] = useState([]);
+    const [from, setFrom] = useState<string | null>(null);
+    const [to, setTo] = useState<string | null>(null);
+    const [date, setDate] = useState<string | null>(null);
+
+    const arr = [
+        {
+            start: "13:00",
+            startTime: "DEL",
+            TotalTime: "03hr",
+            end: "16:00",
+            endTime: "COK"
+        },
+        {
+            start: "13:00",
+            startTime: "DEL",
+            TotalTime: "03hr",
+            end: "16:00",
+            endTime: "COK"
+        },
+        {
+            start: "13:00",
+            startTime: "DEL",
+            TotalTime: "03hr",
+            end: "16:00",
+            endTime: "COK"
+        },
+        {
+            start: "13:00",
+            startTime: "DEL",
+            TotalTime: "03hr",
+            end: "16:00",
+            endTime: "COK"
+        },
+        {
+            start: "13:00",
+            startTime: "DEL",
+            TotalTime: "03hr",
+            end: "16:00",
+            endTime: "COK"
+        },
+        {
+            start: "13:00",
+            startTime: "DEL",
+            TotalTime: "03hr",
+            end: "16:00",
+            endTime: "COK"
+        }
+    ]
 
   useEffect(() => {
     const searchParams = new URLSearchParams(window.location.search);
@@ -70,25 +116,23 @@ export default function Trip() {
     }
   }, [from, to, date]);
 
-  return (
-    <div className="min-h-screen flex justify-center bg-[#F3F3F3] mt-12">
-      <div className="w-full md:w-[90vw]">
-        <Link href={"/"}>
-          <div className="flex m-2 ml-0">
-            <ArrowLeft size="24" color="#000" className="mr-2" />
-            <p>Back</p>
-          </div>
-        </Link>
-        <div>
-          <p>{data}</p>
-        </div>
-      </div>
-    </div>
-  );
-}
+    return (
+        <div className="min-h-screen flex justify-center bg-[#F3F3F3] mt-12">
+            <div className="w-full md:w-[90vw]">
+                <Link href={"/"}>
+                    <div className="flex m-2 ml-0">
+                        <ArrowLeft size="24" color="#000" className="mr-2" />
+                        <p>Back</p>
+                    </div>
+                </Link>
 
-{
-  /* <div className="items-center justify-center">
+                <div>
+                    <p className="my-12 text-red-600">
+                        {data}
+                    </p>
+                </div>
+
+                <div className="items-center justify-center">
                     <h1 className="font-gilroy text-[6vw] sm:text-[5vw] md:text-[5vw] lg:text-[6vw] font-normal leading-[1.2] sm:leading-[1.1] md:leading-[1] tracking-[-0.06em] text-center">
                         Malaysia
                     </h1>
@@ -109,13 +153,13 @@ export default function Trip() {
 
                     <div className="flex justify-between items-center mt-2">
                         <div className="flex justify-left items-center p-6 mr-2 w-[24vw] rounded-xl bg-white">
-                            <Image
+                            {/* <Image
                                 src={Malaysia}
                                 alt="Malaysia"
                                 width={50}
                                 height={50}
                                 className="mr-4"
-                            />
+                            /> */}
                             <div className="">
                                 <p className="text-gray-600 mx-auto text-left">capital</p>
                                 <p className="font-gilroy text-black text-[1.5vw] normal-case leading-normal tracking-[-1px] -mt-1">
@@ -154,13 +198,13 @@ export default function Trip() {
                     </div>
                     <div className="flex items-center justify-between w-[90vw] py-4">
 
-                        Uncomment and adjust the following if flight data rendering is required
+                        {/* Uncomment and adjust the following if flight data rendering is required */}
                         <div className="bg-white shadow-lg rounded-lg p-6 w-[44.5vw]">
                             <h2 className="font-gilroy text-black text-[2vw] normal-case leading-normal mb-4">
                                 Suggested Flight
                             </h2>
                             <div className="m-4">
-                                {data.map((fl, i) => {
+                                {arr.map((fl, i) => {
                                     return (
                                         <div key={i} className="flex justify-between items-center">
                                             <div className="text-center m-2">
@@ -185,17 +229,20 @@ export default function Trip() {
                                 Trains
                             </h2>
                             <div className="m-4">
-                                {data.map((fl, i) => {
+                                {arr.map((fl, i) => {
                                     return (
                                         <div key={i} className="flex justify-between items-center">
                                             <div className="text-center m-2">
-                                                {/* Adjust the rendering as needed */
+                                                {/* Adjust the rendering as needed */}
+                                            </div>
+                                        </div>
+                                    );
+                                })}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
 }
-//                             </div>
-//                         </div>
-//                     );
-//                 })}
-//             </div>
-//         </div>
-//     </div>
-// </div> */}
