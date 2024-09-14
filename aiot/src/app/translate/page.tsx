@@ -56,7 +56,7 @@ export default function TranslatePage() {
   const translate = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:6969/api/search/translate",
+        "https://aiot-backend.vercel.app/api/search/translate",
         { text: `Translate '${text}' which is in ${from} into ${to} language` }
       );
       console.log("response: ", response);
