@@ -37,22 +37,25 @@ export function AnimatedModal({ children }: { children: React.ReactNode }) {
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-  
+
     // Check the date value
     console.log("Selected Date:", date);
-  
+
     const formattedDate = date ? format(date, "dd-MM-yyyy") : "";
     console.log("Formatted Date:", formattedDate);
-  
+
     // Ensure from and to fields are not empty before pushing
     if (from && to && formattedDate) {
-      router.push(`/trip?from=${encodeURIComponent(from)}&to=${encodeURIComponent(to)}&date=${formattedDate}`);
+      router.push(
+        `/trip?from=${encodeURIComponent(from)}&to=${encodeURIComponent(
+          to
+        )}&date=${formattedDate}`
+      );
     } else {
       // Show a toast or alert if any field is empty
       toast.error("Please fill in all fields.");
     }
   };
-  
 
   return (
     <div className="flex items-center justify-center">
@@ -96,8 +99,16 @@ export function AnimatedModal({ children }: { children: React.ReactNode }) {
               ))}
             </div>
             <div className="py-10 flex flex-wrap gap-x-4 gap-y-6 items-start justify-start max-w-sm mx-auto">
-              <Input type="text" placeholder="From" onChange={(e) => setFrom(e.target.value)} />
-              <Input type="text" placeholder="To" onChange={(e) => setTo(e.target.value)} />
+              <Input
+                type="text"
+                placeholder="From"
+                onChange={(e) => setFrom(e.target.value)}
+              />
+              <Input
+                type="text"
+                placeholder="To"
+                onChange={(e) => setTo(e.target.value)}
+              />
               {/* Date Picker */}
               <div className="w-full flex items-center gap-2">
                 <DatePicker
@@ -116,7 +127,10 @@ export function AnimatedModal({ children }: { children: React.ReactNode }) {
             </div>
           </ModalContent>
           <ModalFooter className="flex gap-4 items-center">
-            <button onClick={handleSubmit} className="bg-black text-white text-sm px-2 py-3 rounded-lg border border-black w-28">
+            <button
+              onClick={handleSubmit}
+              className="bg-black text-white text-sm px-2 py-3 rounded-lg border border-black w-28"
+            >
               Generate
             </button>
           </ModalFooter>
