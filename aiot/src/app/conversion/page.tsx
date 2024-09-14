@@ -5,6 +5,9 @@ import NavBar from "@/components/NavBar";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
+interface CurrencyResponse {
+  [key: string]: string;
+}
 const CurrencyConverterPage = () => {
   const [currencies, setCurrencies] = useState<any>({});
   const [fromCurrency, setFromCurrency] = useState("usd");
@@ -31,17 +34,23 @@ const CurrencyConverterPage = () => {
   // Handle conversion
   const handleConvert = async () => {
     try {
-      const response = await axios.get(
-        `https://raw.githubusercontent.com/WoXy-Sensei/currency-api/main/api/${fromCurrency.toUpperCase()}_${toCurrency.toUpperCase()}.json`
-      );
-      const rate = response.data.rate;
-      console.log(rate);
-      // // Assuming you want to convert the entered amount
-      // const result = (parseFloat(amount) * rate).toFixed(2);
-      // setConversionResult(parseFloat(result));
-      console.log(fromCurrency, toCurrency, amount);
+      const response = await fetch("http://localhost:6969/convert", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        // Sending query parameters
+        body: JSON.stringify({
+          from: fromCurrency,
+          to: toCurrency,
+          amount: amount,
+        }),
+      });
+
+      const data = await response.json();
+      setConversionResult(data.result); // Adjust this based on your backend response
     } catch (error) {
-      console.error("Error converting currency:", error);
+      console.error("Error during conversion:", error);
     }
   };
 
@@ -77,7 +86,7 @@ const CurrencyConverterPage = () => {
                 >
                   {Object.entries(currencies).map(([code, name]) => (
                     <option key={code} value={code}>
-                      {name} ({code.toUpperCase()})
+                      {name as string} ({code.toUpperCase()})
                     </option>
                   ))}
                 </select>
@@ -94,7 +103,7 @@ const CurrencyConverterPage = () => {
                 >
                   {Object.entries(currencies).map(([code, name]) => (
                     <option key={code} value={code}>
-                      {name} ({code.toUpperCase()})
+                      {name as string} ({code.toUpperCase()})
                     </option>
                   ))}
                 </select>
@@ -109,7 +118,11 @@ const CurrencyConverterPage = () => {
                 className="border-2 w-[95%] text-[8vw] rounded-lg p-4 text-left flex-wrap h-[40vh]"
                 value={amount}
                 onInput={(e) =>
-                  setAmount(e.currentTarget.value.replace(/[^0-9.]/g, ""))
+                  setAmount(
+                    e.currentTarget.value.replace(/[^0-9.]/g, "") +
+                      " " +
+                      fromCurrency.toUpperCase()
+                  )
                 }
               />
               <button
@@ -118,14 +131,15 @@ const CurrencyConverterPage = () => {
               >
                 Convert
               </button>
-              {conversionResult && (
-                <div className="text-black mt-4">
-                  Result: {conversionResult} {toCurrency.toUpperCase()}
-                </div>
-              )}
             </div>
             <div className="flex justify-center items-center p-4 mr-2 w-[44.5vw] rounded-xl bg-white">
-              <div className="border-2 w-[95%] h-[50vh] rounded-lg"></div>
+              <div className="border-2 w-[95%] h-[50vh] rounded-lg">
+                {conversionResult && (
+                  <div className="text-black mt-4 text-[6vw]">
+                    {conversionResult} {toCurrency.toUpperCase()}
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>
