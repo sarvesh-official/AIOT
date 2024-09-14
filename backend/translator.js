@@ -1,10 +1,10 @@
 const axios = require('axios');
 
-// Replace with your actual API key and external user ID
 const apiKey = process.env.API_KEY;
 const externalUserId = process.env.EXTERNAL_USER_ID;
+const query = "Translate 'How are you' into Telugu language";
 
-// Function to create a chat session
+// Function to create chat session
 async function createChatSession() {
   try {
     const response = await axios.post(
@@ -22,18 +22,19 @@ async function createChatSession() {
     return response.data.data.id; // Extract session ID
   } catch (error) {
     console.error('Error creating chat session:', error);
+    throw error;
   }
 }
 
-// Function to submit a query
+// Function to submit query
 async function submitQuery(sessionId) {
   try {
     const response = await axios.post(
       `https://api.on-demand.io/chat/v1/sessions/${sessionId}/query`,
       {
         endpointId: 'predefined-openai-gpt4o',
-        query: 'Need to fly from Los Angeles to Tokyo',
-        pluginIds: ['plugin-1726239637'],
+        query: query,
+        pluginIds: ['plugin-1712327325', 'plugin-1713962163'],
         responseMode: 'sync'
       },
       {
@@ -42,19 +43,22 @@ async function submitQuery(sessionId) {
         }
       }
     );
-    console.log('Query response:', response.data);
+    return response.data;
   } catch (error) {
     console.error('Error submitting query:', error);
+    throw error;
   }
 }
 
-// Main function to execute the API calls
-async function searchFlights() {
-  const sessionId = await createChatSession();
-  if (sessionId) {
-    await submitQuery(sessionId);
+// Main function to execute the flow
+async function Translator() {
+  try {
+    const sessionId = await createChatSession();
+    const queryResponse = await submitQuery(sessionId);
+    console.log('Query Response:', queryResponse);
+  } catch (error) {
+    console.error('Error in main function:', error);
   }
 }
 
-
-module.exports = { searchFlights }
+module.exports = {Translator}

@@ -8,6 +8,7 @@ const { userRouter } = require('./userRouter')
 const { searchTrains } = require('./searchTrain')
 const { searchFlights } = require('./searchFlight')
 const { getWeather } = require('./weather')
+const { Translator } = require('./translator')
 
 const app = express()
 
@@ -30,7 +31,8 @@ app.get('/',(req,res) => {
 
     // searchTrains()
     // searchFlights()
-    getWeather()
+    // getWeather()
+    Translator()
     res.send("hello")
 })
 
