@@ -83,32 +83,32 @@ export default function Home() {
               </h1>
             </WobbleCard>
             <Link href={"/conversion"}>
-            <WobbleCard
-              containerClassName="flex flex-col w-64 h-64 rounded-[23.947px] bg-gradient-to-br  from-[#F0DF86] to-[#98920E] cursor-pointer"
-              className="py-10"
-            >
-              <div className="pl-24 mb-4">
-                <MoneyRecive size="100" color="white" />
-              </div>
-              <h1 className="text-white text-2xl">
-                Currency <br />
-                Conversion
-              </h1>
-            </WobbleCard>
+              <WobbleCard
+                containerClassName="flex flex-col w-64 h-64 rounded-[23.947px] bg-gradient-to-br  from-[#F0DF86] to-[#98920E] cursor-pointer"
+                className="py-10"
+              >
+                <div className="pl-24 mb-4">
+                  <MoneyRecive size="100" color="white" />
+                </div>
+                <h1 className="text-white text-2xl">
+                  Currency <br />
+                  Conversion
+                </h1>
+              </WobbleCard>
             </Link>
             <Link href={"/translate"}>
-            <WobbleCard
-              containerClassName="flex flex-col w-64 h-64 rounded-[23.947px] bg-gradient-to-br  from-[#86F0BD] to-[#0E984D] cursor-pointer"
-              className="py-10"
-            >
-              <div className="pl-24 mb-4">
-                <Translate size="100" color="white" />
-              </div>
-              <h1 className="text-white text-2xl">
-                Translate <br />
-                Speech
-              </h1>
-            </WobbleCard>
+              <WobbleCard
+                containerClassName="flex flex-col w-64 h-64 rounded-[23.947px] bg-gradient-to-br  from-[#86F0BD] to-[#0E984D] cursor-pointer"
+                className="py-10"
+              >
+                <div className="pl-24 mb-4">
+                  <Translate size="100" color="white" />
+                </div>
+                <h1 className="text-white text-2xl">
+                  Translate <br />
+                  Speech
+                </h1>
+              </WobbleCard>
             </Link>
           </div>
         </div>
