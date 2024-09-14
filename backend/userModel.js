@@ -12,10 +12,6 @@ const userSchema = new mongoose.Schema({
         required: true,
         unique: true
     },
-    pfp: {
-        type: String, 
-        required: false
-    }
 });
 
 const User = mongoose.model('User', userSchema);
