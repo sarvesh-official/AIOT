@@ -104,3 +104,41 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+/* Convex */
+
+.cl-internal-ttumny {
+  background: #A917FE;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+
+}
+
+.cl-internal-ttumny:focus {
+  background: #A917FE;
+  border: none;
+  outline: none;
+
+
+}
+
+.cl-internal-df7v37 {
+  display: none;
+}
+
+.cl-internal-1dauvpw {
+  display: none;
+}
+
+.cl-internal-11ttlho {
+  display: none;
+}
+
+.cl-internal-180wb59 {
+  display: none;
+}
+
+.cl-internal-lqfubk {
+  display: none;
+}
