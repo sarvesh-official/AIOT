@@ -4,7 +4,7 @@ const { getFlights } = require('./handler')
 
 const searchRouter = express.Router()
 
-searchRouter.use('flights', getFlights )
+searchRouter.use('/trip', getFlights )
 
 module.exports = {searchRouter}
 

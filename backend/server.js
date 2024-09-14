@@ -14,6 +14,9 @@ const { Translator } = require('./translator')
 
 const app = express()
 
+app.use(cors())
+app.use(express.json())
+
 const port = process.env.PORT || 3001
 
 connectDB()
@@ -28,7 +31,6 @@ app.use('/api/search', searchRouter)
 
 // app.use(requestLogger)
 
-app.use(cors())
 
 app.get('/',(req,res) => {
 
