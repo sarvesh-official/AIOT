@@ -1,9 +1,65 @@
+"use client"
 import { ArrowLeft, Translate as TranslateIcon } from "iconsax-react"; // Rename the imported Translate
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 
 export default function TranslatePage() {
-  // Rename the local component
+
+  const languages = [
+    "English",
+    "Spanish",
+    "French",
+    "German",
+    "Italian",
+    "Portuguese",
+    "Dutch",
+    "Russian",
+    "Chinese (Simplified and Traditional)",
+    "Japanese",
+    "Korean",
+    "Arabic",
+    "Hindi",
+    "Bengali",
+    "Turkish",
+    "Vietnamese",
+    "Thai",
+    "Greek",
+    "Polish",
+    "Swedish",
+    "Norwegian",
+    "Danish",
+    "Finnish",
+    "Hungarian",
+    "Czech",
+    "Romanian",
+    "Hebrew",
+    "Indonesian",
+    "Malay",
+    "Filipino",
+    "Ukrainian",
+    "Serbian",
+    "Croatian",
+    "Bulgarian",
+    "Slovak",
+    "Persian (Farsi)",
+    "Urdu",
+    "Swahili",
+    "Tamil",
+    "Telugu"
+  ];
+
+  const [fromLanguage, setFromLanguage] = useState(languages[0]);
+  const [toLanguage, setToLanguage] = useState(languages[0]);
+
+  const handleFromChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setFromLanguage(event.target.value);
+  };
+
+  const handleToChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setToLanguage(event.target.value);
+  };
+
   return (
     <div className="min-h-screen flex justify-center bg-[#F3F3F3] mt-12">
       <div className="w-full md:w-[90vw]">
@@ -25,38 +81,47 @@ export default function TranslatePage() {
           </p>
         </div>
         <div className="flex justify-between items-center mt-12">
-          <div className="flex justify-left items-center p-4 pl-8 mr-2 w-[44.5vw] rounded-xl bg-white">
-            <TranslateIcon
-              size="32"
-              color="#000"
-              width={50}
-              height={50}
-              className="mr-4"
-            />{" "}
-            {/* Use renamed icon */}
-            <div className="">
-              <p className="text-gray-600 mx-auto text-left">Language</p>
-              <p className="font-gilroy text-black text-[1.2vw] normal-case leading-normal tracking-[-1px] -mt-1">
-                Kuala Lumpur
-              </p>
+        <div className="flex">
+            <div className="flex justify-left items-center p-4 pl-8 mr-2 w-[44.5vw] rounded-xl bg-white">
+                <TranslateIcon
+                    size="32"
+                    color="#000"
+                    width={50}
+                    height={50}
+                    className="mr-4"
+                />
+                <div className="">
+                    <p className="text-gray-600 mx-auto text-left">From Language</p>
+                    <select title="select_language" className="border-2 rounded-lg w-full p-2 text-left" onChange={(e) => setFromLanguage(e.target.value)}>
+                        {languages.map((language, index) => (
+                            <option key={index} value={language}>
+                                {language}
+                            </option>
+                        ))}
+                    </select>
+                </div>
             </div>
-          </div>
-          <div className="flex justify-left items-center p-4 pl-8 mr-2 w-[44.5vw] rounded-xl bg-white">
-            <TranslateIcon
-              size="32"
-              color="#000"
-              width={50}
-              height={50}
-              className="mr-4"
-            />{" "}
-            {/* Use renamed icon */}
-            <div className="">
-              <p className="text-gray-600 mx-auto text-left">Language</p>
-              <p className="font-gilroy text-black text-[1.2vw] normal-case leading-normal tracking-[-1px] -mt-1">
-                Kuala Lumpur
-              </p>
+
+            <div className="flex justify-left items-center p-4 pl-8 w-[44.5vw] rounded-xl bg-white">
+                <TranslateIcon
+                    size="32"
+                    color="#A917FE"
+                    width={50}
+                    height={50}
+                    className="mr-4"
+                />
+                <div className="">
+                    <p className="text-gray-600 mx-auto text-left">To Language</p>
+                    <select title="select_language" className="border-2 rounded-lg w-full p-2 text-left" onChange={(e) => setToLanguage(e.target.value)}>
+                        {languages.map((language, index) => (
+                            <option key={index} value={language}>
+                                {language}
+                            </option>
+                        ))}
+                    </select>
+                </div>
             </div>
-          </div>
+        </div>
         </div>
         <div className="flex justify-between items-center my-4 mb-14">
           <div className="flex-col justify-center items-center p-4 mr-2 w-[44.5vw]  rounded-xl bg-white">
@@ -69,7 +134,7 @@ export default function TranslatePage() {
             </button>
           </div>
           <div className="flex justify-center items-center p-4 mr-2 w-[44.5vw] rounded-xl bg-white">
-            <div className="border-2 w-[95%] h-[50vh] rounded-lg"></div>
+              <p className="border-2 w-[40vw]  h-[50vh] rounded-lg p-4 text-left flex-wrap">converting {fromLanguage} to {toLanguage}</p>
           </div>
         </div>
       </div>
