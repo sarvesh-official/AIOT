@@ -3,6 +3,7 @@ import NavBar from "@/components/NavBar";
 import { SearchBar } from "@/components/SearchBar";
 import { WobbleCard } from "@/components/ui/wobble-card";
 import { WobbleComponent } from "@/components/WobbleComponent";
+import Link from "next/link";
 
 import {
   Airplane,
@@ -81,6 +82,7 @@ export default function Home() {
                 Destination
               </h1>
             </WobbleCard>
+            <Link href={"/conversion"}>
             <WobbleCard
               containerClassName="flex flex-col w-64 h-64 rounded-[23.947px] bg-gradient-to-br  from-[#F0DF86] to-[#98920E] cursor-pointer"
               className="py-10"
@@ -93,6 +95,8 @@ export default function Home() {
                 Conversion
               </h1>
             </WobbleCard>
+            </Link>
+            <Link href={"/translate"}>
             <WobbleCard
               containerClassName="flex flex-col w-64 h-64 rounded-[23.947px] bg-gradient-to-br  from-[#86F0BD] to-[#0E984D] cursor-pointer"
               className="py-10"
@@ -105,6 +109,7 @@ export default function Home() {
                 Speech
               </h1>
             </WobbleCard>
+            </Link>
           </div>
         </div>
         {/* Services */}
@@ -116,56 +121,56 @@ export default function Home() {
             {/* Grid with 2 rows and 7 columns */}
             <div className="grid grid-cols-7 gap-14">
               {/* Cab Taxi */}
-              <div className="flex flex-col items-center">
+              <div className="flex flex-col items-center cursor-pointer">
                 <div className="p-4 flex items-center justify-center bg-[#F3F3F3] rounded-full">
                   <Car size="32" color="#A917FE" />
                 </div>
                 <p className="text-xs pt-2">Cab Taxi</p> {/* Smaller font */}
               </div>
               {/* Guide */}
-              <div className="flex flex-col items-center">
+              <div className="flex flex-col items-center cursor-pointer">
                 <div className="p-4 flex items-center justify-center bg-[#F3F3F3] rounded-full">
                   <Book1 size="32" color="#A917FE" />
                 </div>
                 <p className="text-xs pt-2">Guide</p> {/* Smaller font */}
               </div>
               {/* Pilgrimage */}
-              <div className="flex flex-col items-center">
+              <div className="flex flex-col items-center cursor-pointer">
                 <div className="p-4 flex items-center justify-center bg-[#F3F3F3] rounded-full">
                   <Command size="32" color="#A917FE" />
                 </div>
                 <p className="text-xs pt-2">Pilgrimage</p> {/* Smaller font */}
               </div>
               {/* Shopping */}
-              <div className="flex flex-col items-center">
+              <div className="flex flex-col items-center cursor-pointer">
                 <div className="p-4 flex items-center justify-center bg-[#F3F3F3] rounded-full">
                   <ShoppingCart size="32" color="#A917FE" />
                 </div>
                 <p className="text-xs pt-2">Shopping</p> {/* Smaller font */}
               </div>
               {/* Dresses */}
-              <div className="flex flex-col items-center">
+              <div className="flex flex-col items-center cursor-pointer">
                 <div className="p-4 flex items-center justify-center bg-[#F3F3F3] rounded-full">
                   <Briefcase size="32" color="#A917FE" />
                 </div>
                 <p className="text-xs pt-2">Dresses</p> {/* Smaller font */}
               </div>
               {/* Food */}
-              <div className="flex flex-col items-center">
+              <div className="flex flex-col items-center cursor-pointer">
                 <div className="p-4 flex items-center justify-center bg-[#F3F3F3] rounded-full">
                   <Happyemoji size="32" color="#A917FE" />
                 </div>
                 <p className="text-xs pt-2">Food</p> {/* Smaller font */}
               </div>
               {/* Parking */}
-              <div className="flex flex-col items-center">
+              <div className="flex flex-col items-center cursor-pointer">
                 <div className="p-4 flex items-center justify-center bg-[#F3F3F3] rounded-full">
                   <SmartCar size="32" color="#A917FE" />
                 </div>
                 <p className="text-xs pt-2">Parking</p> {/* Smaller font */}
               </div>
               {/* Rent Vehicle */}
-              <div className="flex flex-col items-center">
+              <div className="flex flex-col items-center cursor-pointer">
                 <div className="p-4 flex items-center justify-center bg-[#F3F3F3] rounded-full">
                   <Bus size="32" color="#A917FE" />
                 </div>
@@ -173,7 +178,7 @@ export default function Home() {
                 {/* Smaller font */}
               </div>
               {/* Nearby Banks */}
-              <div className="flex flex-col items-center">
+              <div className="flex flex-col items-center cursor-pointer">
                 <div className="p-4 flex items-center justify-center bg-[#F3F3F3] rounded-full">
                   <Bank size="32" color="#A917FE" />
                 </div>
@@ -181,14 +186,14 @@ export default function Home() {
                 {/* Smaller font */}
               </div>
               {/* Weather */}
-              <div className="flex flex-col items-center">
+              <div className="flex flex-col items-center cursor-pointer">
                 <div className="p-4 flex items-center justify-center bg-[#F3F3F3] rounded-full">
                   <CloudLightning size="32" color="#A917FE" />
                 </div>
                 <p className="text-xs pt-2">Weather</p> {/* Smaller font */}
               </div>
               {/* Petrol Price */}
-              <div className="flex flex-col items-center">
+              <div className="flex flex-col items-center cursor-pointer">
                 <div className="p-4 flex items-center justify-center bg-[#F3F3F3] rounded-full">
                   <GasStation size="32" color="#A917FE" />
                 </div>
@@ -196,7 +201,7 @@ export default function Home() {
                 {/* Smaller font */}
               </div>
               {/* Tourist Spot */}
-              <div className="flex flex-col items-center">
+              <div className="flex flex-col items-center cursor-pointer">
                 <div className="p-4 flex items-center justify-center bg-[#F3F3F3] rounded-full">
                   <Location size="32" color="#A917FE" />
                 </div>
@@ -204,14 +209,14 @@ export default function Home() {
                 {/* Smaller font */}
               </div>
               {/* Emergency */}
-              <div className="flex flex-col items-center">
+              <div className="flex flex-col items-center cursor-pointer">
                 <div className="p-4 flex items-center justify-center bg-[#F3F3F3] rounded-full">
                   <Health size="32" color="#A917FE" />
                 </div>
                 <p className="text-xs pt-2">Emergency</p> {/* Smaller font */}
               </div>
               {/* Visa */}
-              <div className="flex flex-col items-center">
+              <div className="flex flex-col items-center cursor-pointer">
                 <div className="p-4 flex items-center justify-center bg-[#F3F3F3] rounded-full">
                   <WalletMinus size="32" color="#A917FE" />
                 </div>

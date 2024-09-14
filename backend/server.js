@@ -10,6 +10,7 @@ const { searchFlights } = require('./searchFlight')
 const { getWeather } = require('./weather')
 const { searchRouter } = require('./searchRouter')
 const { currencyConverter } = require('./currencyConverter')
+const { Translator } = require('./translator')
 
 const app = express()
 
@@ -34,7 +35,8 @@ app.get('/',(req,res) => {
     // searchTrains()
     // searchFlights()
     // getWeather()
-    currencyConverter()
+    // currencyConverter()
+    // Translator()
     res.send("hello")
 })
 

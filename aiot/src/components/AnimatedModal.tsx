@@ -74,7 +74,7 @@ export function AnimatedModal({ children }: { children: React.ReactNode }) {
               <Input type="text" placeholder="From" />
               <Input type="text" placeholder="To" />
               {/* Date Picker */}
-              <div className="w-full">
+              <div className="w-full flex items-center gap-2">
                 <DatePicker
                   selected={date}
                   onChange={handleDateChange}
@@ -82,16 +82,16 @@ export function AnimatedModal({ children }: { children: React.ReactNode }) {
                   placeholderText="Select Date"
                   className="w-full px-4 py-2 text-sm border border-neutral-300 rounded-md focus:outline-none"
                 />
+                {date && (
+                  <p className="text-sm text-neutral-500">
+                    Selected Date: {format(date, "dd/MM/yyyy")}
+                  </p>
+                )}
               </div>
             </div>
           </ModalContent>
           <ModalFooter className="flex gap-4 items-center">
-            {date && (
-              <p className="text-sm text-neutral-500">
-                Selected Date: {format(date, "dd/MM/yyyy")}
-              </p>
-            )}
-            <button className="bg-black text-white text-sm px-2 py-1 rounded-md border border-black w-28">
+            <button className="bg-black text-white text-sm px-2 py-3 rounded-lg border border-black w-28">
               Generate
             </button>
           </ModalFooter>
