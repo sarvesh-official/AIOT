@@ -135,7 +135,7 @@ const CurrencyConverterPage = () => {
             <div className="flex justify-center items-center p-4 mr-2 w-[44.5vw] rounded-xl bg-white">
               <div className="border-2 w-[95%] h-[50vh] rounded-lg">
                 {conversionResult && (
-                  <div className="text-black mt-4 text-[6vw]">
+                  <div className="text-black ml-9 mt-5 text-[6vw]">
                     {conversionResult} {toCurrency.toUpperCase()}
                   </div>
                 )}
