@@ -71,10 +71,11 @@ export default function Home() {
                 </h1>
               </WobbleCard>
             </AnimatedModal>
+            <Link href={"/saved"}>
             <WobbleCard
               containerClassName="flex flex-col w-64 h-64 rounded-[23.947px] bg-gradient-to-br  from-[#86F0F0] to-[#0E5E98] cursor-pointer"
               className="py-10"
-            >
+              >
               <div className="pl-24 mb-4">
                 <Location size="100" color="white" />
               </div>
@@ -83,6 +84,7 @@ export default function Home() {
                 Destination
               </h1>
             </WobbleCard>
+              </Link>
             <Link href={"/conversion"}>
               <WobbleCard
                 containerClassName="flex flex-col w-64 h-64 rounded-[23.947px] bg-gradient-to-br  from-[#F0DF86] to-[#98920E] cursor-pointer"
