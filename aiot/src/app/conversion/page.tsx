@@ -34,7 +34,7 @@ const CurrencyConverterPage = () => {
   // Handle conversion
   const handleConvert = async () => {
     try {
-      const response = await fetch("http://localhost:6969/convert", {
+      const response = await fetch("https://aiot-backend.vercel.app/convert", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -48,7 +48,7 @@ const CurrencyConverterPage = () => {
       });
 
       const data = await response.json();
-      setConversionResult(data.result); // Adjust this based on your backend response
+      setConversionResult(data.result);
     } catch (error) {
       console.error("Error during conversion:", error);
     }
