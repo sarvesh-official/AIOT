@@ -22,6 +22,51 @@ export default function Trip() {
     const [to, setTo] = useState<string | null>(null);
     const [date, setDate] = useState<string | null>(null);
 
+    const arr = [
+        {
+            start: "13:00",
+            startTime: "DEL",
+            TotalTime: "03hr",
+            end: "16:00",
+            endTime: "COK"
+        },
+        {
+            start: "13:00",
+            startTime: "DEL",
+            TotalTime: "03hr",
+            end: "16:00",
+            endTime: "COK"
+        },
+        {
+            start: "13:00",
+            startTime: "DEL",
+            TotalTime: "03hr",
+            end: "16:00",
+            endTime: "COK"
+        },
+        {
+            start: "13:00",
+            startTime: "DEL",
+            TotalTime: "03hr",
+            end: "16:00",
+            endTime: "COK"
+        },
+        {
+            start: "13:00",
+            startTime: "DEL",
+            TotalTime: "03hr",
+            end: "16:00",
+            endTime: "COK"
+        },
+        {
+            start: "13:00",
+            startTime: "DEL",
+            TotalTime: "03hr",
+            end: "16:00",
+            endTime: "COK"
+        }
+    ]
+
     useEffect(() => {
         const searchParams = new URLSearchParams(window.location.search);
         const fromParam = searchParams.get("from");
@@ -80,17 +125,14 @@ export default function Trip() {
                         <p>Back</p>
                     </div>
                 </Link>
+
                 <div>
-                    <p>{data}</p>
+                    <p className="my-12 text-red-600">
+                        {data}
+                    </p>
                 </div>
-                
-            </div>
-        </div>
-    );
-}
 
-
-{/* <div className="items-center justify-center">
+                <div className="items-center justify-center">
                     <h1 className="font-gilroy text-[6vw] sm:text-[5vw] md:text-[5vw] lg:text-[6vw] font-normal leading-[1.2] sm:leading-[1.1] md:leading-[1] tracking-[-0.06em] text-center">
                         Malaysia
                     </h1>
@@ -156,13 +198,13 @@ export default function Trip() {
                     </div>
                     <div className="flex items-center justify-between w-[90vw] py-4">
 
-                        Uncomment and adjust the following if flight data rendering is required
+                        {/* Uncomment and adjust the following if flight data rendering is required */}
                         <div className="bg-white shadow-lg rounded-lg p-6 w-[44.5vw]">
                             <h2 className="font-gilroy text-black text-[2vw] normal-case leading-normal mb-4">
                                 Suggested Flight
                             </h2>
                             <div className="m-4">
-                                {data.map((fl, i) => {
+                                {arr.map((fl, i) => {
                                     return (
                                         <div key={i} className="flex justify-between items-center">
                                             <div className="text-center m-2">
@@ -187,16 +229,20 @@ export default function Trip() {
                                 Trains
                             </h2>
                             <div className="m-4">
-                                {data.map((fl, i) => {
+                                {arr.map((fl, i) => {
                                     return (
                                         <div key={i} className="flex justify-between items-center">
                                             <div className="text-center m-2">
                                                 {/* Adjust the rendering as needed */}
-                //                             </div>
-                //                         </div>
-                //                     );
-                //                 })}
-                //             </div>
-                //         </div>
-                //     </div>
-                // </div> */}
+                                            </div>
+                                        </div>
+                                    );
+                                })}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+}
