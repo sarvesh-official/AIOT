@@ -1,6 +1,6 @@
 const User = require("./userModel");
 
-const searchFlights = require("./searchFlight");
+const searchFlightsRes = require('./searchFlight')
 const { currencyConverter } = require("./currencyConverter");
 const getAllUsers = async (req, res) => {
   try {
@@ -12,22 +12,34 @@ const getAllUsers = async (req, res) => {
 };
 
 const getFlights = async (req, res) => {
-  try {
-    const data = searchFlights();
-    res.send({ data: data });
-  } catch (error) {
-    console.log("error: ", error);
-    throw new Error(error);
-  }
-};
+    try {
+        // Extract query parameters from the request
+        const { source, destination, date } = req.query;
 
-// app.get("/convert", async (req, res) => {
-//   try {
-//     await currencyConverter(req);
-//     res.status(200);
-//   } catch (error) {
-//     res.status(500).send({ error: "Error in currency conversion" });
-//   }
-// });
+        // Validate query parameters
+        if (!source || !destination || !date) {
+            return res.status(400).json({ error: 'Missing required query parameters' });
+        }
+
+        // Log the received parameters for debugging
+        // console.log(`Source: ${source}, Destination: ${destination}, Date: ${date}`);
+
+        // Call the function to get flight data
+        const data = await searchFlightsRes.searchFlightsRes(source, destination, date);
+        console.log('data: ', data);
+        
+        // Check if data was returned
+        if (!data) {
+            return res.status(404).json({ error: 'No flights found' });
+        }
+        
+        // Respond with the flight data
+        res.status(200).send(data);
+    } catch (error) {
+        console.error('Error fetching flights:', error.message || error);
+        // Send a 500 Internal Server Error response
+        res.status(500).json({ error: 'Failed to fetch flights' });
+    }
+};
 
 module.exports = { getAllUsers, getFlights };

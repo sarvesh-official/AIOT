@@ -13,9 +13,15 @@ import { Input } from "./ui/input";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { format } from "date-fns";
+import { useRouter } from "next/navigation";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export function AnimatedModal({ children }: { children: React.ReactNode }) {
   const [date, setDate] = React.useState<Date | null>(null);
+  const [from, setFrom] = React.useState("");
+  const [to, setTo] = React.useState("");
+  const router = useRouter();
 
   const images = [
     "https://images.unsplash.com/photo-1517322048670-4fba75cbbb62?q=80&w=3000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -28,6 +34,25 @@ export function AnimatedModal({ children }: { children: React.ReactNode }) {
   const handleDateChange = (selectedDate: Date | null) => {
     setDate(selectedDate);
   };
+
+  const handleSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
+  
+    // Check the date value
+    console.log("Selected Date:", date);
+  
+    const formattedDate = date ? format(date, "dd-MM-yyyy") : "";
+    console.log("Formatted Date:", formattedDate);
+  
+    // Ensure from and to fields are not empty before pushing
+    if (from && to && formattedDate) {
+      router.push(`/trip?from=${encodeURIComponent(from)}&to=${encodeURIComponent(to)}&date=${formattedDate}`);
+    } else {
+      // Show a toast or alert if any field is empty
+      toast.error("Please fill in all fields.");
+    }
+  };
+  
 
   return (
     <div className="flex items-center justify-center">
@@ -71,32 +96,33 @@ export function AnimatedModal({ children }: { children: React.ReactNode }) {
               ))}
             </div>
             <div className="py-10 flex flex-wrap gap-x-4 gap-y-6 items-start justify-start max-w-sm mx-auto">
-              <Input type="text" placeholder="From" />
-              <Input type="text" placeholder="To" />
+              <Input type="text" placeholder="From" onChange={(e) => setFrom(e.target.value)} />
+              <Input type="text" placeholder="To" onChange={(e) => setTo(e.target.value)} />
               {/* Date Picker */}
               <div className="w-full flex items-center gap-2">
                 <DatePicker
                   selected={date}
                   onChange={handleDateChange}
-                  dateFormat="dd/MM/yyyy"
+                  dateFormat="dd-MM-yyyy"
                   placeholderText="Select Date"
                   className="w-full px-4 py-2 text-sm border border-neutral-300 rounded-md focus:outline-none"
                 />
                 {date && (
                   <p className="text-sm text-neutral-500">
-                    Selected Date: {format(date, "dd/MM/yyyy")}
+                    Selected Date: {format(date, "dd-MM-yyyy")}
                   </p>
                 )}
               </div>
             </div>
           </ModalContent>
           <ModalFooter className="flex gap-4 items-center">
-            <button className="bg-black text-white text-sm px-2 py-3 rounded-lg border border-black w-28">
+            <button onClick={handleSubmit} className="bg-black text-white text-sm px-2 py-3 rounded-lg border border-black w-28">
               Generate
             </button>
           </ModalFooter>
         </ModalBody>
       </Modal>
+      <ToastContainer />
     </div>
   );
 }

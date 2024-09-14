@@ -3,8 +3,8 @@ import NavBar from "@/components/NavBar";
 import { SearchBar } from "@/components/SearchBar";
 import { WobbleCard } from "@/components/ui/wobble-card";
 import { WobbleComponent } from "@/components/WobbleComponent";
+import { CardHoverEffectDemo } from "@/components/ui/card-hover-effect";
 import Link from "next/link";
-
 import {
   Airplane,
   Bank,
@@ -24,6 +24,7 @@ import {
   Translate,
   WalletMinus,
 } from "iconsax-react";
+import { AnimatedTooltipPreview } from "@/components/AnimatedToolTip";
 
 export default function Home() {
   return (
@@ -231,6 +232,16 @@ export default function Home() {
           <WobbleComponent />
         </div>
       </main>
+      <div className="text-center">
+        <h1 className="text-5xl">Meet the Creators</h1>
+        <div className="mt-6">
+          <AnimatedTooltipPreview />
+        </div>
+      </div>
+      {/* <div className="mt-24">
+        <h1 className="text-5xl text-center">API's Used</h1>
+        <CardHoverEffectDemo />
+      </div> */}
     </>
   );
 }
