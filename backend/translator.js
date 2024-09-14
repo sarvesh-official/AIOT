@@ -2,9 +2,7 @@ const axios = require('axios');
 
 const apiKey = process.env.API_KEY;
 const externalUserId = process.env.EXTERNAL_USER_ID;
-const query = "Translate 'How are you' into Telugu language";
 
-// Function to create chat session
 async function createChatSession() {
   try {
     const response = await axios.post(
@@ -19,15 +17,14 @@ async function createChatSession() {
         }
       }
     );
-    return response.data.data.id; // Extract session ID
+    return response.data.data.id;
   } catch (error) {
     console.error('Error creating chat session:', error);
     throw error;
   }
 }
 
-// Function to submit query
-async function submitQuery(sessionId) {
+async function submitQuery(sessionId, query) {
   try {
     const response = await axios.post(
       `https://api.on-demand.io/chat/v1/sessions/${sessionId}/query`,
@@ -50,15 +47,18 @@ async function submitQuery(sessionId) {
   }
 }
 
-// Main function to execute the flow
-async function Translator() {
+async function Translator(query) {
   try {
     const sessionId = await createChatSession();
-    const queryResponse = await submitQuery(sessionId);
+    const queryResponse = await submitQuery(sessionId, query);
     console.log('Query Response:', queryResponse);
+    return queryResponse;
   } catch (error) {
     console.error('Error in main function:', error);
+    throw error;
   }
 }
 
-module.exports = {Translator}
+Translator("Translate 'How are you' into Telugu")
+
+module.exports = { Translator };

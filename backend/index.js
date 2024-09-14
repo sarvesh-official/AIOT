@@ -36,7 +36,7 @@ app.get('/',(req,res) => {
     // searchFlights()
     // getWeather()
     // currencyConverter()
-    // Translator()
+    Translator()
     res.send("hello")
 })
 
