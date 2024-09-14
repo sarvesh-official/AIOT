@@ -2,7 +2,7 @@ const axios = require('axios');
 
 // Replace with your actual API key and external user ID
 const apiKey = process.env.API_KEY;
-const externalUserId = process.env.API_KEY;
+const externalUserId = process.env.EXTERNAL_USER_ID;
 
 // Function to create a chat session
 async function createChatSession() {

@@ -1,57 +1,68 @@
+"use client";
+
+import React, { useState } from "react";
+
+import axios from "axios";
+
 import { ArrowLeft, Clock, DollarCircle, Sun1 } from "iconsax-react";
 import Image from "next/image";
 import Malaysia from "../../../assets/Malaysia images 1.png";
 
+interface FlightSearchParams {
+    sourceAirportCode: string;
+    destinationAirportCode: string;
+    date: string;
+    itineraryType?: string;
+    sortOrder?: string;
+    numAdults?: number;
+    numSeniors?: number;
+    classOfService?: string;
+    pageNumber?: number;
+    nearby?: string;
+    nonstop?: string;
+    currencyCode?: string;
+    region?: string;
+  }
+
 export default function Trip() {
 
-    const arr = [
-        {
-            start: "13:00",
-            startTime: "DEL",
-            TotalTime: "03hr",
-            end: "16:00",
-            endTime: "COK"
-        },
-        {
-            start: "13:00",
-            startTime: "DEL",
-            TotalTime: "03hr",
-            end: "16:00",
-            endTime: "COK"
-        },
-        {
-            start: "13:00",
-            startTime: "DEL",
-            TotalTime: "03hr",
-            end: "16:00",
-            endTime: "COK"
-        },
-        {
-            start: "13:00",
-            startTime: "DEL",
-            TotalTime: "03hr",
-            end: "16:00",
-            endTime: "COK"
-        },
-        {
-            start: "13:00",
-            startTime: "DEL",
-            TotalTime: "03hr",
-            end: "16:00",
-            endTime: "COK"
-        },
-        {
-            start: "13:00",
-            startTime: "DEL",
-            TotalTime: "03hr",
-            end: "16:00",
-            endTime: "COK"
-        }
-    ]
+  const [data, setData] = useState([]);
 
-    return (
-        <div className="min-h-screen flex justify-center bg-[#F3F3F3] mt-12">
-            <div className="w-full md:w-[90vw]">
+  // Function to get flight search results
+  const fetchFlights = async(params: FlightSearchParams)  => {
+    try {
+      const response = await axios.get(`${process.env.NEXT_DEPLOYED_LINK}/api/search/flights`, { params });
+      console.log(`${process.env.NEXT_DEPLOYED_LINK}/api/search/flights`)
+      return response.data; // Return the data from the response
+    } catch (error) {
+      // Handle the error
+      console.error("Error fetching flights:", error);
+      throw error; // Re-throw the error if you want to handle it further up the chain
+    }
+  }
+
+  // Example usage of fetchFlights function
+  async function searchFlights() {
+    const searchParams = {
+      sourceAirportCode: "BOM",
+      destinationAirportCode: "DEL",
+      date: "2024-09-14",
+    };
+
+    try {
+      const fetchData = await fetchFlights(searchParams);
+      setData(fetchData)
+      console.log("Flight search results:", data);
+    } catch (error) {
+      console.error("Error in searchFlights function:", error);
+    }
+  }
+
+  searchFlights();
+
+  return (
+    <div className="min-h-screen flex justify-center bg-[#F3F3F3] mt-12">
+      <div className="w-full md:w-[90vw]">
                 <div className="flex m-2 ml-0">
                     <ArrowLeft size="24" color="#000" className="mr-2" />
                     <p>Back</p>
@@ -113,10 +124,10 @@ export default function Trip() {
                         <div className="bg-white shadow-lg rounded-lg p-6 w-[44.5vw]">
                             <h2 className="font-gilroy text-black text-[2vw] normal-case leading-normal mb-4">Suggested Flight</h2>
                             <div className="m-4">
-                                {arr.map((fl, i) => {
+                                {data.map((fl, i) => {
                                     return <div className="flex  justify-between items-center">
                                         <div className="text-center m-2">
-                                            <p>{fl.start}</p>
+                                            {/* <p>{fl.start}</p>
                                             <p>{fl.startTime}</p>
                                         </div>
                                         <div className="grow border-b border-gray-400 m-4"></div>
@@ -124,7 +135,7 @@ export default function Trip() {
                                         <div className="grow border-b border-gray-400 m-4"></div>
                                         <div className="text-center m-2">
                                             <p>{fl.end}</p>
-                                            <p>{fl.endTime}</p>
+                                            <p>{fl.endTime}</p> */}
                                         </div>
                                     </div>
                                 })}
@@ -134,10 +145,10 @@ export default function Trip() {
                         <div className="bg-white shadow-lg rounded-lg p-6 w-[44.5vw]">
                             <h2 className="font-gilroy text-black text-[2vw] normal-case leading-normal mb-4">Trains</h2>
                             <div className="m-4">
-                                {arr.map((fl, i) => {
+                                {data.map((fl, i) => {
                                     return <div className="flex  justify-between items-center">
                                         <div className="text-center m-2">
-                                            <p>{fl.start}</p>
+                                            {/* <p>{fl.start}</p>
                                             <p>{fl.startTime}</p>
                                         </div>
                                         <div className="grow border-b border-gray-400 m-4"></div>
@@ -145,7 +156,7 @@ export default function Trip() {
                                         <div className="grow border-b border-gray-400 m-4"></div>
                                         <div className="text-center m-2">
                                             <p>{fl.end}</p>
-                                            <p>{fl.endTime}</p>
+                                            <p>{fl.endTime}</p> */}
                                         </div>
                                     </div>
                                 })}
@@ -154,6 +165,6 @@ export default function Trip() {
                     </div>
                 </div>
             </div>
-        </div>
-    );
+    </div>
+  );
 }
