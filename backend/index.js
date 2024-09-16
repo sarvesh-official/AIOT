@@ -48,7 +48,7 @@ app.put("/convert", async (req, res) => {
     return res.status(400).send({ error: "Missing parameters" });
   }
 
-  const query = `Convert ${amount} ${from} into ${to} and just give the converted value as a float type, no other explanation needed even if it is approximate`;
+  const query = `Convert ${amount} ${from} into ${to} and just give the converted value as a float type, no other explanation needed even if it is approximate. Just give the output in decimal no other values`;
 
   try {
     const sessionId = await createChatSession(apiKey, externalUserId);

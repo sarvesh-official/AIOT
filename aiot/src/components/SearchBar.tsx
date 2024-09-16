@@ -32,7 +32,7 @@ export function SearchBar({
     setModalOpen(true);
 
     try {
-      const response = await fetch("https://aiot-backend.vercel.app/search", {
+      const response = await fetch("http://localhost:6969/search", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

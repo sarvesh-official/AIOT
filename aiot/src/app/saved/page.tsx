@@ -1,11 +1,10 @@
 import { SearchBar } from "@/components/SearchBar";
 import { ExpandableCardDemo } from "@/components/ui/Expandable-Cards";
-import { ArrowLeft, Translate as TranslateIcon } from "iconsax-react"; // Rename the imported Translate
+import { ArrowLeft, Translate as TranslateIcon } from "iconsax-react";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function TranslatePage() {
-  // Rename the local component
   return (
     <>
       <div className="min-h-screen flex justify-center bg-[#F3F3F3] mt-12">
@@ -26,7 +25,9 @@ export default function TranslatePage() {
               favorite places effortlessly
             </p>
           </div>
-          <div className="mt-6"></div>
+          <div className="mt-6">
+            <ExpandableCardDemo />
+          </div>
         </div>
       </div>
       <div> </div>
